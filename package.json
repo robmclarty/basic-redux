@@ -4,7 +4,10 @@
   "description": "'A basic demo of Redux usage including a simple API call.'",
   "main": "build/index.html",
   "scripts": {
-    "test": "not yet"
+    "test": "not yet",
+    "build:js": "npx soko build:assets ./assets",
+    "build:assets": "npx soko build:js --jsIn ./src/index.js --jsOut ./build/app.js",
+    "build": "npm run build:js && npm run build:assets"
   },
   "repository": {
     "type": "git",
