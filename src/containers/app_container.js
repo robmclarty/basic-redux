@@ -18,16 +18,22 @@ const AppContainer = ({
   rates,
   onButtonPress
 }) => (
-  <main>
-    <Notification />
+  <div>
+    <header>
+      <Notification />
+    </header>
 
-    <h2>Currency Rates</h2>
-    <RateTable rates={rates} />
+    <main>
+      <h2>Currency Rates</h2>
+      <RateTable rates={rates} />
+    </main>
 
-    <Button
-        label="Fetch Rates"
-        onPress={onButtonPress} />
-  </main>
+    <footer>
+      <Button
+          label="Fetch Rates"
+          onPress={onButtonPress} />
+    </footer>
+  </div>
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer)
