@@ -4,33 +4,22 @@ import { connect } from 'react-redux'
 import { fetchRates } from '../actions'
 import Button from '../components/button'
 import RateTable from '../components/rate_table'
-import Notification from '../components/notification'
+import Notification from './notification_container'
 
 const mapStateToProps = state => ({
-  rates: state.rates,
-  notificationIsVisible: state.notifications.isVisible,
-  notificationMessage: state.notifications.message,
-  notificationStatus: state.notifications.status
+  rates: state.rates
 })
 
 const mapDispatchToProps = dispatch => ({
-  onButtonPress: () => dispatch(fetchRates()),
-  onResetNotification: () => dispatch(resetNotification())
+  onButtonPress: () => dispatch(fetchRates())
 })
 
 const AppContainer = ({
   rates,
-  notificationIsVisible,
-  notificationMessage,
-  notificationStatus,
   onButtonPress
 }) => (
   <main>
-    <Notification
-        isVisible={notificationIsVisible}
-        status={notificationStatus}
-        message={notificationMessage}
-        onReset={onResetNotification} />
+    <Notification />
 
     <h2>Currency Rates</h2>
     <RateTable rates={rates} />
