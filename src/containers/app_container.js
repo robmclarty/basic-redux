@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Button from '../components/button'
+import RateTable from '../components/rate_table'
 
 const AppContainer = ({ rates }) => (
   <div>
