@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { resetNotification } from '../actions'
+import { resetNotifications } from '../actions'
 import Notification from '../components/notification'
 
 const mapStateToProps = state => ({
@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onReset: () => dispatch(resetNotification())
+  onReset: () => dispatch(resetNotifications())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notification)
