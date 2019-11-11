@@ -23,7 +23,7 @@ const defaultState = {
 const rates = (state = defaultState, action) => {
   switch(action.type) {
   case FETCH_RATES_SUCCESS:
-    return mapRatesToState(action.rates)
+    return mapRatesToState(state, action.rates)
   default:
     return state
   }
