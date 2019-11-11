@@ -3,16 +3,20 @@ import {
   FETCH_RATES_SUCCESS,
   FETCH_RATES_FAIL
 } from '../constants/action_types'
+import {
+  STATUS_SUCCESS,
+  STATUS_INFO,
+  STATUS_ERROR
+} from '../constants/status_types'
 
-// NOTE: This is just to test things out prior to implementing a real api call.
 const defaultState = {
-  "CAD": 1.4561,
-  "USD": 1.1034,
-  "JPY": 120.72,
-  "GBP": 0.86158
+  isLoading: false,
+  isVisible: false,
+  status: STATUS_INFO,
+  message: ''
 }
 
-const rates = (state = defaultState, action) => {
+const notifications = (state = defaultState, action) => {
   switch(action.type) {
   case FETCH_RATES_PENDING:
   case FETCH_RATES_SUCCESS:
@@ -22,4 +26,4 @@ const rates = (state = defaultState, action) => {
   }
 }
 
-export default rates
+export default notifications
