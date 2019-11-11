@@ -13,3 +13,5 @@ const rates = (state = defaultState, action) => {
     return state
   }
 }
+
+export default rates
