@@ -35845,29 +35845,20 @@ exports.fetchRates = void 0;
 
 var _action_types = require("../constants/action_types");
 
-var sampleFetchRates = {
-  "CAD": 1.273,
-  "USD": 1.0111,
-  "SEK": 10.7025
-}; // Fetch Rates
-// -----------
-//export const fetchRates = () => (dispatch, callApi) => {
+var _endpoints = require("../constants/endpoints");
 
 var fetchRates = function fetchRates() {
-  return {
-    type: _action_types.FETCH_RATES_SUCCESS,
-    rates: sampleFetchRates
-  }; // dispatch(fetchRatesPending())
-  //
-  // // return callApi({ url: ratesUrl, method: 'GET' })
-  // //   .then(res => dispatch(fetchRatesSuccess(res.rates)))
-  // //   .catch(err => dispatch(fetchRatesFail(err)))
-  //
-  // // REFACTOR: This is only temporary to test out the core action data flow.
-  // // Uncomment the above code when middleware has been implemented.
-  // return Promise.resolve({ rates: sampleFetchRates })
-  //   .then(res => dispatch(fetchRatesSuccess(res.rates)))
-  //   .catch(err => dispatch(fetchRatesFail(err)))
+  return function (dispatch, callApi) {
+    dispatch(fetchRatesPending());
+    return callApi({
+      url: _endpoints.RATES_URL,
+      method: 'GET'
+    }).then(function (res) {
+      return dispatch(fetchRatesSuccess(res.rates));
+    }).catch(function (err) {
+      return dispatch(fetchRatesFail(err));
+    });
+  };
 };
 
 exports.fetchRates = fetchRates;
@@ -35892,7 +35883,7 @@ var fetchRatesFail = function fetchRatesFail(error) {
   };
 };
 
-},{"../constants/action_types":62}],60:[function(require,module,exports){
+},{"../constants/action_types":62,"../constants/endpoints":63}],60:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -35974,6 +35965,16 @@ exports.RESET_NOTIFICATIONS = RESET_NOTIFICATIONS;
 },{}],63:[function(require,module,exports){
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.RATES_URL = void 0;
+var RATES_URL = 'https://api.exchangeratesapi.io/latest';
+exports.RATES_URL = RATES_URL;
+
+},{}],64:[function(require,module,exports){
+"use strict";
+
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
@@ -36020,7 +36021,7 @@ var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App
 
 exports.default = _default;
 
-},{"../actions":57,"../components/button":60,"../components/rate_table":61,"@babel/runtime/helpers/interopRequireDefault":3,"react":47,"react-redux":36}],64:[function(require,module,exports){
+},{"../actions":57,"../components/button":60,"../components/rate_table":61,"@babel/runtime/helpers/interopRequireDefault":3,"react":47,"react-redux":36}],65:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36045,7 +36046,7 @@ var mapRatesToState = function mapRatesToState(state, rates) {
 
 exports.mapRatesToState = mapRatesToState;
 
-},{"@babel/runtime/helpers/defineProperty":1,"@babel/runtime/helpers/interopRequireDefault":3}],65:[function(require,module,exports){
+},{"@babel/runtime/helpers/defineProperty":1,"@babel/runtime/helpers/interopRequireDefault":3}],66:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36058,17 +36059,65 @@ var _redux = require("redux");
 
 var _reactRedux = require("react-redux");
 
+var _api_middleware = _interopRequireDefault(require("./middleware/api_middleware"));
+
 var _reducers = _interopRequireDefault(require("./reducers"));
 
 var _app_container = _interopRequireDefault(require("./containers/app_container"));
 
-var store = (0, _redux.createStore)(_reducers.default);
+// If Chrome devToolsExtension exists, hook it up as middleware.
+var devTools = window.devToolsExtension ? window.devToolsExtension() : function (f) {
+  return f;
+}; // Combine middlewares together.
+
+var middlewares = (0, _redux.compose)((0, _redux.applyMiddleware)(_api_middleware.default), devTools); // Create store from app's reducers combined with middlewares.
+
+var store = (0, _redux.createStore)(_reducers.default, middlewares);
 (0, _reactDom.render)(_react.default.createElement(_reactRedux.Provider, {
   store: store
 }, _react.default.createElement(_app_container.default, null)), document.getElementById('app-root') // defined in `/assets/index.html`
 );
 
-},{"./containers/app_container":63,"./reducers":66,"@babel/runtime/helpers/interopRequireDefault":3,"react":47,"react-dom":18,"react-redux":36,"redux":48}],66:[function(require,module,exports){
+},{"./containers/app_container":64,"./middleware/api_middleware":67,"./reducers":68,"@babel/runtime/helpers/interopRequireDefault":3,"react":47,"react-dom":18,"react-redux":36,"redux":48}],67:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var sampleFetchRates = {
+  "CAD": 1.273,
+  "USD": 1.0111,
+  "SEK": 10.7025
+}; // TODO: make this an async function and use fetch API to hit target url.
+
+var callApi = function callApi(_ref) {
+  var _ref$url = _ref.url,
+      url = _ref$url === void 0 ? '' : _ref$url,
+      _ref$method = _ref.method,
+      method = _ref$method === void 0 ? 'GET' : _ref$method,
+      _ref$body = _ref.body,
+      body = _ref$body === void 0 ? {} : _ref$body;
+  return Promise.resolve({
+    rates: sampleFetchRates
+  });
+}; // If an action returns a function instead of an object, apply this middleware.
+
+
+var thunk = function thunk(_ref2) {
+  var dispatch = _ref2.dispatch,
+      getState = _ref2.getState;
+  return function (next) {
+    return function (action) {
+      return typeof action === 'function' ? action(dispatch, callApi, getState) : next(action);
+    };
+  };
+};
+
+var _default = thunk;
+exports.default = _default;
+
+},{}],68:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36089,7 +36138,7 @@ var appReducer = (0, _redux.combineReducers)({
 var _default = appReducer;
 exports.default = _default;
 
-},{"./rates":67,"@babel/runtime/helpers/interopRequireDefault":3,"redux":48}],67:[function(require,module,exports){
+},{"./rates":69,"@babel/runtime/helpers/interopRequireDefault":3,"redux":48}],69:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36133,6 +36182,6 @@ var rates = function rates() {
 var _default = rates;
 exports.default = _default;
 
-},{"../constants/action_types":62,"../helpers/rate_helper":64}]},{},[65])
+},{"../constants/action_types":62,"../helpers/rate_helper":65}]},{},[66])
 
 //# sourceMappingURL=app.js.map
