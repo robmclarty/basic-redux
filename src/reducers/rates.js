@@ -1,5 +1,8 @@
+import {
+  FETCH_RATES_SUCCESS
+} from '../constants/action_types'
+import { mapRatesToState } from '../helpers/rate_helper'
 
-// NOTE: This is just to test things out prior to implementing a real api call.
 const defaultState = {
   "CAD": 1.4561,
   "USD": 1.1034,
@@ -7,8 +10,20 @@ const defaultState = {
   "GBP": 0.86158
 }
 
+// State should look like a dictionary of currency codes mapped to their
+// corresponding rate values like this:
+// ```
+// {
+//   "CAD": 1.4561,
+//   "USD": 1.1034,
+//   "JPY": 120.72,
+//   "GBP": 0.86158
+// }
+// ```
 const rates = (state = defaultState, action) => {
   switch(action.type) {
+  case FETCH_RATES_SUCCESS:
+    return mapRatesToState(state, action.rates)
   default:
     return state
   }
