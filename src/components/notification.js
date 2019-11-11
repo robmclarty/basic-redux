@@ -25,7 +25,7 @@ const Notification = ({
 }
 
 Notification.propTypes = {
-  isVisible: PropType.bool.isRequired,
+  isVisible: PropTypes.bool.isRequired,
   status: PropTypes.oneOf(STATUSES),
   message: PropTypes.string,
   reset: PropTypes.func.isRequired
