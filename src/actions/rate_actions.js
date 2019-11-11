@@ -12,7 +12,8 @@ const sampleFetchRates = {
 
 // Fetch Rates
 // -----------
-export const fetchRates = () => (dispatch, callApi) => {
+//export const fetchRates = () => (dispatch, callApi) => {
+export const fetchRates = () => dispatch => {
   dispatch(fetchRatesPending())
 
   // return callApi({ url: ratesUrl, method: 'GET' })
