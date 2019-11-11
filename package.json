@@ -29,5 +29,8 @@
     "react-dom": "^16.11.0",
     "react-redux": "^7.1.3",
     "redux": "^4.0.4"
+  },
+  "devDependencies": {
+    "soko": "^0.5.3"
   }
 }
