@@ -1,8 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
+import { fetchRates } from '../actions'
 import Button from '../components/button'
 import RateTable from '../components/rate_table'
-import { fetchRates } from '../actions'
+import Notification from './notification_container'
 
 const mapStateToProps = state => ({
   rates: state.rates
@@ -12,13 +14,25 @@ const mapDispatchToProps = dispatch => ({
   onButtonPress: () => dispatch(fetchRates())
 })
 
-const AppContainer = ({ rates, onButtonPress }) => (
+const AppContainer = ({
+  rates,
+  onButtonPress
+}) => (
   <div>
-    <Button
-      label="Fetch Rates"
-      onPress={onButtonPress} />
+    <header>
+      <Notification />
+    </header>
 
-    <RateTable rates={rates} />
+    <main>
+      <h2>Currency Rates</h2>
+      <RateTable rates={rates} />
+    </main>
+
+    <footer>
+      <Button
+          label="Fetch Rates"
+          onPress={onButtonPress} />
+    </footer>
   </div>
 )
 
