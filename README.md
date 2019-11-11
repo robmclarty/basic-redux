@@ -55,3 +55,26 @@ Create application using data from https://api.exchangeratesapi.io/latest
   "date": "2019-11-08"
 }
 ```
+
+## Folder Structure
+
+The following structure is overkill for this small of an application, but I've
+included it for demonstration's sake. This provides a good set of buckets to
+begin to grow the application from scratch up until it reaches the point where
+a larger, more sophisticated and complex, structure would be warranted.
+
+```
+/assets - static assets like html, images, fonts, etc.
+  index.html - main application starting point
+/src - react application code
+  /actions - redux action creators
+  /components - dumb/stateless components
+  /containers - smart/state-aware components
+  /constants - config/global values
+  /helpers - utility/helper modules
+  /middleware - in-between action=>reducer functions
+  /reducers - redux store
+  index.js - main React application
+/tests - test scripts
+/build - target for automated build processes
+```
