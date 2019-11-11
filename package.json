@@ -4,7 +4,10 @@
   "description": "'A basic demo of Redux usage including a simple API call.'",
   "main": "build/index.html",
   "scripts": {
-    "test": "not yet"
+    "test": "not yet",
+    "build:js": "npx soko build:assets ./assets",
+    "build:assets": "npx soko build:js --jsIn ./src/index.js --jsOut ./build/app.js",
+    "build": "npm run build:js && npm run build:assets"
   },
   "repository": {
     "type": "git",
@@ -21,5 +24,16 @@
   "bugs": {
     "url": "https://github.com/robmclarty/basic-redux/issues"
   },
-  "homepage": "https://github.com/robmclarty/basic-redux#readme"
+  "homepage": "https://github.com/robmclarty/basic-redux#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-redux": "^7.1.3",
+    "redux": "^4.0.4"
+  },
+  "devDependencies": {
+    "soko": "^0.5.3"
+  }
 }
