@@ -1,2 +1,2 @@
 export * from './rate_actions'
-// NOTE: append more action types here
+export * from './notification_actions'
