@@ -13,18 +13,23 @@ const sampleFetchRates = {
 // Fetch Rates
 // -----------
 //export const fetchRates = () => (dispatch, callApi) => {
-export const fetchRates = () => dispatch => {
-  dispatch(fetchRatesPending())
+export const fetchRates = () => {
+  return {
+    type: FETCH_RATES_SUCCESS,
+    rates: sampleFetchRates
+  }
 
-  // return callApi({ url: ratesUrl, method: 'GET' })
+  // dispatch(fetchRatesPending())
+  //
+  // // return callApi({ url: ratesUrl, method: 'GET' })
+  // //   .then(res => dispatch(fetchRatesSuccess(res.rates)))
+  // //   .catch(err => dispatch(fetchRatesFail(err)))
+  //
+  // // REFACTOR: This is only temporary to test out the core action data flow.
+  // // Uncomment the above code when middleware has been implemented.
+  // return Promise.resolve({ rates: sampleFetchRates })
   //   .then(res => dispatch(fetchRatesSuccess(res.rates)))
   //   .catch(err => dispatch(fetchRatesFail(err)))
-
-  // REFACTOR: This is only temporary to test out the core action data flow.
-  // Uncomment the above code when middleware has been implemented.
-  return Promise.resolve({ rates: sampleFetchRates })
-    .then(res => dispatch(fetchRatesSuccess(res.rates)))
-    .catch(err => dispatch(fetchRatesFail(err)))
 }
 
 const fetchRatesPending = () => ({
