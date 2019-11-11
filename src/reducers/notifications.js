@@ -39,6 +39,8 @@ const notifications = (state = defaultState, action) => {
       status: STATUS_ERROR,
       message: 'Something went wrong.'
     }
+  case RESET_NOTIFICATIONS:
+    return defaultState
   default:
     return state
   }
