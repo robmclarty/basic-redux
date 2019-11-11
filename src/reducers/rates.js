@@ -3,6 +3,13 @@ import {
 } from '../constants/action_types'
 import { mapRatesToState } from '../helpers/rate_helper'
 
+const defaultState = {
+  "CAD": 1.4561,
+  "USD": 1.1034,
+  "JPY": 120.72,
+  "GBP": 0.86158
+}
+
 // State should look like a dictionary of currency codes mapped to their
 // corresponding rate values like this:
 // ```
@@ -13,7 +20,7 @@ import { mapRatesToState } from '../helpers/rate_helper'
 //   "GBP": 0.86158
 // }
 // ```
-const rates = (state = {}, action) => {
+const rates = (state = defaultState, action) => {
   switch(action.type) {
   case FETCH_RATES_SUCCESS:
     return mapRatesToState(action.rates)
