@@ -17,7 +17,7 @@ const RateTable = ({ rates }) => (
             <td>{rates[key]}</td>
           </tr>
         )
-      }}
+      })}
     </tbody>
   </table>
 )
