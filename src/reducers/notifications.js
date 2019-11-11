@@ -1,7 +1,8 @@
 import {
   FETCH_RATES_PENDING,
   FETCH_RATES_SUCCESS,
-  FETCH_RATES_FAIL
+  FETCH_RATES_FAIL,
+  RESET_NOTIFICATIONS
 } from '../constants/action_types'
 import {
   STATUS_SUCCESS,
