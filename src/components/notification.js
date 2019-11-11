@@ -28,7 +28,7 @@ Notification.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   status: PropTypes.oneOf(STATUSES),
   message: PropTypes.string,
-  reset: PropTypes.func.isRequired
+  onReset: PropTypes.func.isRequired
 }
 
 export default Notification
