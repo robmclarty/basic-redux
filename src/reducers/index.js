@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux'
 import rates from './rates'
+import notifications from './notifications'
 
 const appReducer = combineReducers({
-  rates
-  // NOTE: add more reducers here
+  rates,
+  notifications
 })
 
 export default appReducer
