@@ -86,3 +86,12 @@ Sample output from https://api.exchangeratesapi.io/latest
 
 Tests are using Jest and Enzyme as the main frameworks. Babel packages have been
 installed to enable the test environment to load ES6 modules.
+
+
+## Soko
+
+I built a utilitiy library called [Soko](https://github.com/robmclarty/soko) that
+I've used to transpile JS and build assets. It uses Browserify with Babel to
+handle ES6 syntax. This could alternatively have been replaced with Webpack. I
+enjoy CLI scripts that I can integrate with `package.json` using `npx` as I
+think it makes configuration a bit cleaner and keeps everything in one place.
