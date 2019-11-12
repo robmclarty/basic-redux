@@ -23,15 +23,20 @@ const AppContainer = ({
       <Notification />
     </header>
 
+    <br />
+
     <main>
       <h2>Currency Rates</h2>
+      <Button
+          label="Fetch Rates"
+          onPress={onButtonPress} />
+      <br /><br />
       <RateTable rates={rates} />
     </main>
 
     <footer>
-      <Button
-          label="Fetch Rates"
-          onPress={onButtonPress} />
+      <br />
+      &copy; 2019
     </footer>
   </div>
 )

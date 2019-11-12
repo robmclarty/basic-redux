@@ -5,14 +5,17 @@ import {
 } from '../constants/action_types'
 import { RATES_URL } from '../constants/endpoints'
 
-// Fetch Rates
-// -----------
-export const fetchRates = () => (dispatch, callApi) => {
+// Main action creator which triggers a chain-reaction of subsequent actions
+// depending on the result of the async http request operation.
+export const fetchRates = () => async (dispatch, callApi) => {
   dispatch(fetchRatesPending())
 
-  return callApi({ url: RATES_URL, method: 'GET' })
-    .then(res => dispatch(fetchRatesSuccess(res.rates)))
-    .catch(err => dispatch(fetchRatesFail(err)))
+  try {
+    const data = await callApi({ url: RATES_URL })
+    dispatch(fetchRatesSuccess(data.rates))
+  } catch (err) {
+    dispatch(fetchRatesFail(err))
+  }
 }
 
 const fetchRatesPending = () => ({
