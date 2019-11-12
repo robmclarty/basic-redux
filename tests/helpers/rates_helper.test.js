@@ -1,6 +1,6 @@
 import { mapRatesToState } from '../../src/helpers/rate_helper'
 
-describe('rates_helper', () => {
+describe('Helpers/rates_helper', () => {
   const sampleRates = {
     "CAD": 1.4561,
     "USD": 1.1034,
