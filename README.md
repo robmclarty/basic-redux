@@ -72,25 +72,17 @@ Sample output from https://api.exchangeratesapi.io/latest
     "BRL": 4.5583,
     "RUB": 70.4653,
     "HRK": 7.4345,
-    "JPY": 120.72,
-    "THB": 33.527,
-    "CHF": 1.0991,
-    "SGD": 1.5002,
-    "PLN": 4.261,
-    "BGN": 1.9558,
-    "TRY": 6.3513,
-    "CNY": 7.7115,
-    "NOK": 10.0893,
-    "NZD": 1.7426,
-    "ZAR": 16.3121,
-    "USD": 1.1034,
-    "MXN": 21.1383,
-    "ILS": 3.8533,
-    "GBP": 0.86158,
-    "KRW": 1276.66,
-    "MYR": 4.5609
+    "JPY": 120.72    
   },
   "base": "EUR",
   "date": "2019-11-08"
 }
 ```
+
+
+## Testing
+
+`npm test`
+
+Tests are using Jest and Enzyme as the main frameworks. Babel packages have been
+installed to enable the test environment to load ES6 modules.
