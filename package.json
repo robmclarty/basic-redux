@@ -1,6 +1,6 @@
 {
   "name": "basic-redux",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "'A basic demo of Redux usage including a simple API call.'",
   "main": "build/index.html",
   "scripts": {
