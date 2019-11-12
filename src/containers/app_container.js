@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { fetchRates } from '../actions'
+import { RATES_URL } from '../constants/endpoints'
 import Button from '../components/button'
 import RateTable from '../components/rate_table'
 import Spinner from '../components/spinner'
@@ -13,7 +14,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onButtonPress: () => dispatch(fetchRates())
+  onButtonPress: () => dispatch(fetchRates(RATES_URL))
 })
 
 const AppContainer = ({
