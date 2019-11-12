@@ -1,4 +1,4 @@
-import { mapRatesToState } from '../src/helpers/rate_helper'
+import { mapRatesToState } from '../../src/helpers/rate_helper'
 
 describe('rates_helper', () => {
   const sampleRates = {

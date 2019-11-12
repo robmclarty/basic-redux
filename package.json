@@ -10,7 +10,10 @@
     "build": "npm run build:js && npm run build:assets"
   },
   "jest": {
-    "testRegex": "(/tests/.*.(test|spec))\\.js?$"
+    "testRegex": "(/tests/.*.(test|spec))\\.js?$",
+    "setupFilesAfterEnv": [
+      "<rootDir>config/enzyme_setup.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -41,6 +44,8 @@
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
     "babel-jest": "^24.9.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "jest": "^24.9.0",
     "react-test-renderer": "^16.11.0",
     "soko": "^0.5.3"
