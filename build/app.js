@@ -1,42 +1,4 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
-
-  if (info.done) {
-    resolve(value);
-  } else {
-    Promise.resolve(value).then(_next, _throw);
-  }
-}
-
-function _asyncToGenerator(fn) {
-  return function () {
-    var self = this,
-        args = arguments;
-    return new Promise(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-      }
-
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-      }
-
-      _next(undefined);
-    });
-  };
-}
-
-module.exports = _asyncToGenerator;
-},{}],2:[function(require,module,exports){
 function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -53,7 +15,7 @@ function _defineProperty(obj, key, value) {
 }
 
 module.exports = _defineProperty;
-},{}],3:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 function _extends() {
   module.exports = _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -73,7 +35,7 @@ function _extends() {
 }
 
 module.exports = _extends;
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : {
     "default": obj
@@ -81,7 +43,7 @@ function _interopRequireDefault(obj) {
 }
 
 module.exports = _interopRequireDefault;
-},{}],5:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 var _typeof = require("../helpers/typeof");
 
 function _getRequireWildcardCache() {
@@ -137,7 +99,7 @@ function _interopRequireWildcard(obj) {
 }
 
 module.exports = _interopRequireWildcard;
-},{"../helpers/typeof":7}],6:[function(require,module,exports){
+},{"../helpers/typeof":6}],5:[function(require,module,exports){
 function _objectWithoutPropertiesLoose(source, excluded) {
   if (source == null) return {};
   var target = {};
@@ -154,7 +116,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 }
 
 module.exports = _objectWithoutPropertiesLoose;
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
 
 function _typeof(obj) {
@@ -172,10 +134,10 @@ function _typeof(obj) {
 }
 
 module.exports = _typeof;
-},{}],8:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 module.exports = require("regenerator-runtime");
 
-},{"regenerator-runtime":52}],9:[function(require,module,exports){
+},{"regenerator-runtime":51}],8:[function(require,module,exports){
 'use strict';
 
 /**
@@ -280,7 +242,7 @@ function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
 
 module.exports = hoistNonReactStatics;
 
-},{"react-is":24}],10:[function(require,module,exports){
+},{"react-is":23}],9:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -334,7 +296,7 @@ module.exports = invariant;
 
 }).call(this,require('_process'))
 
-},{"_process":13}],11:[function(require,module,exports){
+},{"_process":12}],10:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -361,7 +323,7 @@ exports.Request = global.Request;
 exports.Response = global.Response;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],12:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -453,7 +415,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
-},{}],13:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -639,7 +601,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],14:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -746,7 +708,7 @@ module.exports = checkPropTypes;
 
 }).call(this,require('_process'))
 
-},{"./lib/ReactPropTypesSecret":18,"_process":13}],15:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":17,"_process":12}],14:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -812,7 +774,7 @@ module.exports = function() {
   return ReactPropTypes;
 };
 
-},{"./lib/ReactPropTypesSecret":18}],16:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":17}],15:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -1408,7 +1370,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 }).call(this,require('_process'))
 
-},{"./checkPropTypes":14,"./lib/ReactPropTypesSecret":18,"_process":13,"object-assign":12,"react-is":24}],17:[function(require,module,exports){
+},{"./checkPropTypes":13,"./lib/ReactPropTypesSecret":17,"_process":12,"object-assign":11,"react-is":23}],16:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -1432,7 +1394,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 }).call(this,require('_process'))
 
-},{"./factoryWithThrowingShims":15,"./factoryWithTypeCheckers":16,"_process":13,"react-is":24}],18:[function(require,module,exports){
+},{"./factoryWithThrowingShims":14,"./factoryWithTypeCheckers":15,"_process":12,"react-is":23}],17:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1446,7 +1408,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-},{}],19:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 (function (process){
 /** @license React v16.11.0
  * react-dom.development.js
@@ -29178,7 +29140,7 @@ module.exports = reactDom;
 
 }).call(this,require('_process'))
 
-},{"_process":13,"object-assign":12,"prop-types/checkPropTypes":14,"react":50,"scheduler":57,"scheduler/tracing":58}],20:[function(require,module,exports){
+},{"_process":12,"object-assign":11,"prop-types/checkPropTypes":13,"react":49,"scheduler":56,"scheduler/tracing":57}],19:[function(require,module,exports){
 /** @license React v16.11.0
  * react-dom.production.min.js
  *
@@ -29470,7 +29432,7 @@ xe,ye,Ca.injectEventPluginsByName,fa,Sc,function(a){ya(a,Rc)},cb,db,Pd,Ba,Sj,{cu
 (function(a){var b=a.findFiberByHostInstance;return ok(n({},a,{overrideHookState:null,overrideProps:null,setSuspenseHandler:null,scheduleUpdate:null,currentDispatcherRef:Ea.ReactCurrentDispatcher,findHostInstanceByFiber:function(a){a=ic(a);return null===a?null:a.stateNode},findFiberByHostInstance:function(a){return b?b(a):null},findHostInstancesForRefresh:null,scheduleRefresh:null,scheduleRoot:null,setRefreshHandler:null,getCurrentFiber:null}))})({findFiberByHostInstance:Fc,bundleType:0,version:"16.11.0",
 rendererPackageName:"react-dom"});var Dk={default:Ck},Ek=Dk&&Ck||Dk;module.exports=Ek.default||Ek;
 
-},{"object-assign":12,"react":50,"scheduler":57}],21:[function(require,module,exports){
+},{"object-assign":11,"react":49,"scheduler":56}],20:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -29513,7 +29475,7 @@ if (process.env.NODE_ENV === 'production') {
 
 }).call(this,require('_process'))
 
-},{"./cjs/react-dom.development.js":19,"./cjs/react-dom.production.min.js":20,"_process":13}],22:[function(require,module,exports){
+},{"./cjs/react-dom.development.js":18,"./cjs/react-dom.production.min.js":19,"_process":12}],21:[function(require,module,exports){
 (function (process){
 /** @license React v16.11.0
  * react-is.development.js
@@ -29754,7 +29716,7 @@ exports.isSuspense = isSuspense;
 
 }).call(this,require('_process'))
 
-},{"_process":13}],23:[function(require,module,exports){
+},{"_process":12}],22:[function(require,module,exports){
 /** @license React v16.11.0
  * react-is.production.min.js
  *
@@ -29771,7 +29733,7 @@ exports.typeOf=y;exports.AsyncMode=l;exports.ConcurrentMode=m;exports.ContextCon
 exports.isValidElementType=function(a){return"string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||a===q||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n||a.$$typeof===v||a.$$typeof===w||a.$$typeof===x)};exports.isAsyncMode=function(a){return z(a)||y(a)===l};exports.isConcurrentMode=z;exports.isContextConsumer=function(a){return y(a)===k};exports.isContextProvider=function(a){return y(a)===h};
 exports.isElement=function(a){return"object"===typeof a&&null!==a&&a.$$typeof===c};exports.isForwardRef=function(a){return y(a)===n};exports.isFragment=function(a){return y(a)===e};exports.isLazy=function(a){return y(a)===t};exports.isMemo=function(a){return y(a)===r};exports.isPortal=function(a){return y(a)===d};exports.isProfiler=function(a){return y(a)===g};exports.isStrictMode=function(a){return y(a)===f};exports.isSuspense=function(a){return y(a)===p};
 
-},{}],24:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -29783,7 +29745,7 @@ if (process.env.NODE_ENV === 'production') {
 
 }).call(this,require('_process'))
 
-},{"./cjs/react-is.development.js":22,"./cjs/react-is.production.min.js":23,"_process":13}],25:[function(require,module,exports){
+},{"./cjs/react-is.development.js":21,"./cjs/react-is.production.min.js":22,"_process":12}],24:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -29798,7 +29760,7 @@ var ReactReduxContext = _react["default"].createContext(null);
 exports.ReactReduxContext = ReactReduxContext;
 var _default = ReactReduxContext;
 exports["default"] = _default;
-},{"@babel/runtime/helpers/interopRequireDefault":4,"react":50}],26:[function(require,module,exports){
+},{"@babel/runtime/helpers/interopRequireDefault":3,"react":49}],25:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -29861,7 +29823,7 @@ Provider.propTypes = {
 };
 var _default = Provider;
 exports["default"] = _default;
-},{"../utils/Subscription":40,"./Context":25,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/helpers/interopRequireWildcard":5,"prop-types":17,"react":50}],27:[function(require,module,exports){
+},{"../utils/Subscription":39,"./Context":24,"@babel/runtime/helpers/interopRequireDefault":3,"@babel/runtime/helpers/interopRequireWildcard":4,"prop-types":16,"react":49}],26:[function(require,module,exports){
 (function (process){
 "use strict";
 
@@ -30224,7 +30186,7 @@ _ref) {
 }
 }).call(this,require('_process'))
 
-},{"../utils/Subscription":40,"../utils/useIsomorphicLayoutEffect":45,"./Context":25,"@babel/runtime/helpers/extends":3,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/helpers/interopRequireWildcard":5,"@babel/runtime/helpers/objectWithoutPropertiesLoose":6,"_process":13,"hoist-non-react-statics":9,"invariant":10,"react":50,"react-is":24}],28:[function(require,module,exports){
+},{"../utils/Subscription":39,"../utils/useIsomorphicLayoutEffect":44,"./Context":24,"@babel/runtime/helpers/extends":2,"@babel/runtime/helpers/interopRequireDefault":3,"@babel/runtime/helpers/interopRequireWildcard":4,"@babel/runtime/helpers/objectWithoutPropertiesLoose":5,"_process":12,"hoist-non-react-statics":8,"invariant":9,"react":49,"react-is":23}],27:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -30340,7 +30302,7 @@ function createConnect(_temp) {
 var _default = createConnect();
 
 exports["default"] = _default;
-},{"../components/connectAdvanced":27,"../utils/shallowEqual":44,"./mapDispatchToProps":29,"./mapStateToProps":30,"./mergeProps":31,"./selectorFactory":32,"@babel/runtime/helpers/extends":3,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/helpers/objectWithoutPropertiesLoose":6}],29:[function(require,module,exports){
+},{"../components/connectAdvanced":26,"../utils/shallowEqual":43,"./mapDispatchToProps":28,"./mapStateToProps":29,"./mergeProps":30,"./selectorFactory":31,"@babel/runtime/helpers/extends":2,"@babel/runtime/helpers/interopRequireDefault":3,"@babel/runtime/helpers/objectWithoutPropertiesLoose":5}],28:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -30373,7 +30335,7 @@ function whenMapDispatchToPropsIsObject(mapDispatchToProps) {
 
 var _default = [whenMapDispatchToPropsIsFunction, whenMapDispatchToPropsIsMissing, whenMapDispatchToPropsIsObject];
 exports["default"] = _default;
-},{"./wrapMapToProps":34,"redux":51}],30:[function(require,module,exports){
+},{"./wrapMapToProps":33,"redux":50}],29:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -30395,7 +30357,7 @@ function whenMapStateToPropsIsMissing(mapStateToProps) {
 
 var _default = [whenMapStateToPropsIsFunction, whenMapStateToPropsIsMissing];
 exports["default"] = _default;
-},{"./wrapMapToProps":34}],31:[function(require,module,exports){
+},{"./wrapMapToProps":33}],30:[function(require,module,exports){
 (function (process){
 "use strict";
 
@@ -30453,7 +30415,7 @@ var _default = [whenMergePropsIsFunction, whenMergePropsIsOmitted];
 exports["default"] = _default;
 }).call(this,require('_process'))
 
-},{"../utils/verifyPlainObject":46,"@babel/runtime/helpers/extends":3,"@babel/runtime/helpers/interopRequireDefault":4,"_process":13}],32:[function(require,module,exports){
+},{"../utils/verifyPlainObject":45,"@babel/runtime/helpers/extends":2,"@babel/runtime/helpers/interopRequireDefault":3,"_process":12}],31:[function(require,module,exports){
 (function (process){
 "use strict";
 
@@ -30556,7 +30518,7 @@ function finalPropsSelectorFactory(dispatch, _ref2) {
 }
 }).call(this,require('_process'))
 
-},{"./verifySubselectors":33,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/helpers/objectWithoutPropertiesLoose":6,"_process":13}],33:[function(require,module,exports){
+},{"./verifySubselectors":32,"@babel/runtime/helpers/interopRequireDefault":3,"@babel/runtime/helpers/objectWithoutPropertiesLoose":5,"_process":12}],32:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -30581,7 +30543,7 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
   verify(mapDispatchToProps, 'mapDispatchToProps', displayName);
   verify(mergeProps, 'mergeProps', displayName);
 }
-},{"../utils/warning":47,"@babel/runtime/helpers/interopRequireDefault":4}],34:[function(require,module,exports){
+},{"../utils/warning":46,"@babel/runtime/helpers/interopRequireDefault":3}],33:[function(require,module,exports){
 (function (process){
 "use strict";
 
@@ -30661,7 +30623,7 @@ function wrapMapToPropsFunc(mapToProps, methodName) {
 }
 }).call(this,require('_process'))
 
-},{"../utils/verifyPlainObject":46,"@babel/runtime/helpers/interopRequireDefault":4,"_process":13}],35:[function(require,module,exports){
+},{"../utils/verifyPlainObject":45,"@babel/runtime/helpers/interopRequireDefault":3,"_process":12}],34:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -30714,7 +30676,7 @@ function createDispatchHook(context) {
 
 var useDispatch = createDispatchHook();
 exports.useDispatch = useDispatch;
-},{"../components/Context":25,"./useStore":38}],36:[function(require,module,exports){
+},{"../components/Context":24,"./useStore":37}],35:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -30749,7 +30711,7 @@ function useReduxContext() {
   (0, _invariant["default"])(contextValue, 'could not find react-redux context value; please ensure the component is wrapped in a <Provider>');
   return contextValue;
 }
-},{"../components/Context":25,"@babel/runtime/helpers/interopRequireDefault":4,"invariant":10,"react":50}],37:[function(require,module,exports){
+},{"../components/Context":24,"@babel/runtime/helpers/interopRequireDefault":3,"invariant":9,"react":49}],36:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -30896,7 +30858,7 @@ function createSelectorHook(context) {
 
 var useSelector = createSelectorHook();
 exports.useSelector = useSelector;
-},{"../components/Context":25,"../utils/Subscription":40,"../utils/useIsomorphicLayoutEffect":45,"./useReduxContext":36,"@babel/runtime/helpers/interopRequireDefault":4,"invariant":10,"react":50}],38:[function(require,module,exports){
+},{"../components/Context":24,"../utils/Subscription":39,"../utils/useIsomorphicLayoutEffect":44,"./useReduxContext":35,"@babel/runtime/helpers/interopRequireDefault":3,"invariant":9,"react":49}],37:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -30949,7 +30911,7 @@ function createStoreHook(context) {
 
 var useStore = createStoreHook();
 exports.useStore = useStore;
-},{"../components/Context":25,"./useReduxContext":36,"react":50}],39:[function(require,module,exports){
+},{"../components/Context":24,"./useReduxContext":35,"react":49}],38:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -30997,7 +30959,7 @@ var _shallowEqual = _interopRequireDefault(require("./utils/shallowEqual"));
 
 exports.shallowEqual = _shallowEqual["default"];
 (0, _batch.setBatch)(_reactBatchedUpdates.unstable_batchedUpdates);
-},{"./components/Context":25,"./components/Provider":26,"./components/connectAdvanced":27,"./connect/connect":28,"./hooks/useDispatch":35,"./hooks/useSelector":37,"./hooks/useStore":38,"./utils/batch":41,"./utils/reactBatchedUpdates":43,"./utils/shallowEqual":44,"@babel/runtime/helpers/interopRequireDefault":4}],40:[function(require,module,exports){
+},{"./components/Context":24,"./components/Provider":25,"./components/connectAdvanced":26,"./connect/connect":27,"./hooks/useDispatch":34,"./hooks/useSelector":36,"./hooks/useStore":37,"./utils/batch":40,"./utils/reactBatchedUpdates":42,"./utils/shallowEqual":43,"@babel/runtime/helpers/interopRequireDefault":3}],39:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -31101,7 +31063,7 @@ function () {
 }();
 
 exports["default"] = Subscription;
-},{"./batch":41}],41:[function(require,module,exports){
+},{"./batch":40}],40:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -31126,7 +31088,7 @@ var getBatch = function getBatch() {
 };
 
 exports.getBatch = getBatch;
-},{}],42:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -31148,7 +31110,7 @@ function isPlainObject(obj) {
 
   return proto === baseProto;
 }
-},{}],43:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -31157,7 +31119,7 @@ exports.unstable_batchedUpdates = void 0;
 var _reactDom = require("react-dom");
 
 exports.unstable_batchedUpdates = _reactDom.unstable_batchedUpdates;
-},{"react-dom":21}],44:[function(require,module,exports){
+},{"react-dom":20}],43:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -31191,7 +31153,7 @@ function shallowEqual(objA, objB) {
 
   return true;
 }
-},{}],45:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -31210,7 +31172,7 @@ var _react = require("react");
 var isHopefullyDomEnvironment = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined';
 var useIsomorphicLayoutEffect = isHopefullyDomEnvironment ? _react.useLayoutEffect : _react.useEffect;
 exports.useIsomorphicLayoutEffect = useIsomorphicLayoutEffect;
-},{"react":50}],46:[function(require,module,exports){
+},{"react":49}],45:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -31227,7 +31189,7 @@ function verifyPlainObject(value, displayName, methodName) {
     (0, _warning["default"])(methodName + "() in " + displayName + " must return a plain object. Instead received " + value + ".");
   }
 }
-},{"./isPlainObject":42,"./warning":47,"@babel/runtime/helpers/interopRequireDefault":4}],47:[function(require,module,exports){
+},{"./isPlainObject":41,"./warning":46,"@babel/runtime/helpers/interopRequireDefault":3}],46:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -31257,7 +31219,7 @@ function warning(message) {
   /* eslint-enable no-empty */
 
 }
-},{}],48:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 (function (process){
 /** @license React v16.11.0
  * react.development.js
@@ -33580,7 +33542,7 @@ module.exports = react;
 
 }).call(this,require('_process'))
 
-},{"_process":13,"object-assign":12,"prop-types/checkPropTypes":14}],49:[function(require,module,exports){
+},{"_process":12,"object-assign":11,"prop-types/checkPropTypes":13}],48:[function(require,module,exports){
 /** @license React v16.11.0
  * react.production.min.js
  *
@@ -33607,7 +33569,7 @@ b,c){return W().useImperativeHandle(a,b,c)},useDebugValue:function(){},useLayout
 if(null!=b){void 0!==b.ref&&(g=b.ref,l=J.current);void 0!==b.key&&(d=""+b.key);if(a.type&&a.type.defaultProps)var f=a.type.defaultProps;for(k in b)K.call(b,k)&&!L.hasOwnProperty(k)&&(e[k]=void 0===b[k]&&void 0!==f?f[k]:b[k])}var k=arguments.length-2;if(1===k)e.children=c;else if(1<k){f=Array(k);for(var m=0;m<k;m++)f[m]=arguments[m+2];e.children=f}return{$$typeof:p,type:a.type,key:d,ref:g,props:e,_owner:l}},createFactory:function(a){var b=M.bind(null,a);b.type=a;return b},isValidElement:N,version:"16.11.0",
 __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentDispatcher:I,ReactCurrentBatchConfig:{suspense:null},ReactCurrentOwner:J,IsSomeRendererActing:{current:!1},assign:h}},Y={default:X},Z=Y&&X||Y;module.exports=Z.default||Z;
 
-},{"object-assign":12}],50:[function(require,module,exports){
+},{"object-assign":11}],49:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -33619,7 +33581,7 @@ if (process.env.NODE_ENV === 'production') {
 
 }).call(this,require('_process'))
 
-},{"./cjs/react.development.js":48,"./cjs/react.production.min.js":49,"_process":13}],51:[function(require,module,exports){
+},{"./cjs/react.development.js":47,"./cjs/react.production.min.js":48,"_process":12}],50:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -34296,7 +34258,7 @@ exports.createStore = createStore;
 
 }).call(this,require('_process'))
 
-},{"_process":13,"symbol-observable":59}],52:[function(require,module,exports){
+},{"_process":12,"symbol-observable":58}],51:[function(require,module,exports){
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -35024,7 +34986,7 @@ try {
   Function("r", "regeneratorRuntime = r")(runtime);
 }
 
-},{}],53:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 (function (process){
 /** @license React v0.17.0
  * scheduler-tracing.development.js
@@ -35450,7 +35412,7 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 
 }).call(this,require('_process'))
 
-},{"_process":13}],54:[function(require,module,exports){
+},{"_process":12}],53:[function(require,module,exports){
 /** @license React v0.17.0
  * scheduler-tracing.production.min.js
  *
@@ -35462,7 +35424,7 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 
 'use strict';Object.defineProperty(exports,"__esModule",{value:!0});var b=0;exports.__interactionsRef=null;exports.__subscriberRef=null;exports.unstable_clear=function(a){return a()};exports.unstable_getCurrent=function(){return null};exports.unstable_getThreadID=function(){return++b};exports.unstable_trace=function(a,d,c){return c()};exports.unstable_wrap=function(a){return a};exports.unstable_subscribe=function(){};exports.unstable_unsubscribe=function(){};
 
-},{}],55:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 (function (process){
 /** @license React v0.17.0
  * scheduler.development.js
@@ -36492,7 +36454,7 @@ exports.unstable_Profiling = unstable_Profiling;
 
 }).call(this,require('_process'))
 
-},{"_process":13}],56:[function(require,module,exports){
+},{"_process":12}],55:[function(require,module,exports){
 /** @license React v0.17.0
  * scheduler.production.min.js
  *
@@ -36516,7 +36478,7 @@ exports.unstable_scheduleCallback=function(a,b,c){var d=exports.unstable_now();i
 exports.unstable_wrapCallback=function(a){var b=S;return function(){var c=S;S=b;try{return a.apply(this,arguments)}finally{S=c}}};exports.unstable_getCurrentPriorityLevel=function(){return S};exports.unstable_shouldYield=function(){var a=exports.unstable_now();W(a);var b=M(O);return b!==R&&null!==R&&null!==b&&null!==b.callback&&b.startTime<=a&&b.expirationTime<R.expirationTime||k()};exports.unstable_requestPaint=aa;exports.unstable_continueExecution=function(){U||T||(U=!0,f(Y))};
 exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNode=function(){return M(O)};exports.unstable_Profiling=null;
 
-},{}],57:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -36528,7 +36490,7 @@ if (process.env.NODE_ENV === 'production') {
 
 }).call(this,require('_process'))
 
-},{"./cjs/scheduler.development.js":55,"./cjs/scheduler.production.min.js":56,"_process":13}],58:[function(require,module,exports){
+},{"./cjs/scheduler.development.js":54,"./cjs/scheduler.production.min.js":55,"_process":12}],57:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -36540,7 +36502,7 @@ if (process.env.NODE_ENV === 'production') {
 
 }).call(this,require('_process'))
 
-},{"./cjs/scheduler-tracing.development.js":53,"./cjs/scheduler-tracing.production.min.js":54,"_process":13}],59:[function(require,module,exports){
+},{"./cjs/scheduler-tracing.development.js":52,"./cjs/scheduler-tracing.production.min.js":53,"_process":12}],58:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -36573,7 +36535,7 @@ var result = (0, _ponyfill2['default'])(root);
 exports['default'] = result;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./ponyfill.js":60}],60:[function(require,module,exports){
+},{"./ponyfill.js":59}],59:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36597,7 +36559,7 @@ function symbolObservablePonyfill(root) {
 
 	return result;
 };
-},{}],61:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36628,7 +36590,7 @@ Object.keys(_notification_actions).forEach(function (key) {
   });
 });
 
-},{"./notification_actions":62,"./rate_actions":63}],62:[function(require,module,exports){
+},{"./notification_actions":61,"./rate_actions":62}],61:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36646,7 +36608,7 @@ var resetNotifications = function resetNotifications() {
 
 exports.resetNotifications = resetNotifications;
 
-},{"../constants/action_types":68}],63:[function(require,module,exports){
+},{"../constants/action_types":67}],62:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36658,55 +36620,40 @@ exports.fetchRates = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-
 var _action_types = require("../constants/action_types");
 
-var _endpoints = require("../constants/endpoints");
+var fetchRates = function fetchRates(url) {
+  return function _callee(dispatch, callApi) {
+    var data;
+    return _regenerator.default.async(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            dispatch(fetchRatesPending());
+            _context.prev = 1;
+            _context.next = 4;
+            return _regenerator.default.awrap(callApi({
+              url: url
+            }));
 
-var fetchRates = function fetchRates() {
-  return (
-    /*#__PURE__*/
-    function () {
-      var _ref = (0, _asyncToGenerator2.default)(
-      /*#__PURE__*/
-      _regenerator.default.mark(function _callee(dispatch, callApi) {
-        var data;
-        return _regenerator.default.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                dispatch(fetchRatesPending());
-                _context.prev = 1;
-                _context.next = 4;
-                return callApi({
-                  url: _endpoints.RATES_URL
-                });
+          case 4:
+            data = _context.sent;
+            dispatch(fetchRatesSuccess(data.rates));
+            _context.next = 11;
+            break;
 
-              case 4:
-                data = _context.sent;
-                dispatch(fetchRatesSuccess(data.rates));
-                _context.next = 11;
-                break;
+          case 8:
+            _context.prev = 8;
+            _context.t0 = _context["catch"](1);
+            dispatch(fetchRatesFail(_context.t0));
 
-              case 8:
-                _context.prev = 8;
-                _context.t0 = _context["catch"](1);
-                dispatch(fetchRatesFail(_context.t0));
-
-              case 11:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, null, [[1, 8]]);
-      }));
-
-      return function (_x, _x2) {
-        return _ref.apply(this, arguments);
-      };
-    }()
-  );
+          case 11:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, null, null, [[1, 8]]);
+  };
 };
 
 exports.fetchRates = fetchRates;
@@ -36731,7 +36678,7 @@ var fetchRatesFail = function fetchRatesFail(error) {
   };
 };
 
-},{"../constants/action_types":68,"../constants/endpoints":69,"@babel/runtime/helpers/asyncToGenerator":1,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/regenerator":8}],64:[function(require,module,exports){
+},{"../constants/action_types":67,"@babel/runtime/helpers/interopRequireDefault":3,"@babel/runtime/regenerator":7}],63:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36763,7 +36710,7 @@ Button.propTypes = {
 var _default = Button;
 exports.default = _default;
 
-},{"@babel/runtime/helpers/interopRequireDefault":4,"prop-types":17,"react":50}],65:[function(require,module,exports){
+},{"@babel/runtime/helpers/interopRequireDefault":3,"prop-types":16,"react":49}],64:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36804,7 +36751,7 @@ Notification.propTypes = {
 var _default = Notification;
 exports.default = _default;
 
-},{"../constants/status_types":70,"@babel/runtime/helpers/interopRequireDefault":4,"prop-types":17,"react":50}],66:[function(require,module,exports){
+},{"../constants/status_types":69,"@babel/runtime/helpers/interopRequireDefault":3,"prop-types":16,"react":49}],65:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36834,7 +36781,7 @@ RateTable.propTypes = {
 var _default = RateTable;
 exports.default = _default;
 
-},{"@babel/runtime/helpers/interopRequireDefault":4,"prop-types":17,"react":50}],67:[function(require,module,exports){
+},{"@babel/runtime/helpers/interopRequireDefault":3,"prop-types":16,"react":49}],66:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36862,7 +36809,7 @@ Spinner.propTypes = {
 var _default = Spinner;
 exports.default = _default;
 
-},{"@babel/runtime/helpers/interopRequireDefault":4,"prop-types":17,"react":50}],68:[function(require,module,exports){
+},{"@babel/runtime/helpers/interopRequireDefault":3,"prop-types":16,"react":49}],67:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36880,7 +36827,7 @@ exports.FETCH_RATES_FAIL = FETCH_RATES_FAIL;
 var RESET_NOTIFICATIONS = 'RESET_NOTIFICATIONS';
 exports.RESET_NOTIFICATIONS = RESET_NOTIFICATIONS;
 
-},{}],69:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36890,7 +36837,7 @@ exports.RATES_URL = void 0;
 var RATES_URL = 'https://api.exchangeratesapi.io/latest';
 exports.RATES_URL = RATES_URL;
 
-},{}],70:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36906,7 +36853,7 @@ exports.STATUS_INFO = STATUS_INFO;
 var STATUSES = [STATUS_SUCCESS, STATUS_ERROR, STATUS_INFO];
 exports.STATUSES = STATUSES;
 
-},{}],71:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36921,6 +36868,8 @@ var _react = _interopRequireDefault(require("react"));
 var _reactRedux = require("react-redux");
 
 var _actions = require("../actions");
+
+var _endpoints = require("../constants/endpoints");
 
 var _button = _interopRequireDefault(require("../components/button"));
 
@@ -36940,7 +36889,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     onButtonPress: function onButtonPress() {
-      return dispatch((0, _actions.fetchRates)());
+      return dispatch((0, _actions.fetchRates)(_endpoints.RATES_URL));
     }
   };
 };
@@ -36963,7 +36912,7 @@ var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App
 
 exports.default = _default;
 
-},{"../actions":61,"../components/button":64,"../components/rate_table":66,"../components/spinner":67,"./notification_container":72,"@babel/runtime/helpers/interopRequireDefault":4,"react":50,"react-redux":39}],72:[function(require,module,exports){
+},{"../actions":60,"../components/button":63,"../components/rate_table":65,"../components/spinner":66,"../constants/endpoints":68,"./notification_container":71,"@babel/runtime/helpers/interopRequireDefault":3,"react":49,"react-redux":38}],71:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -37001,7 +36950,7 @@ var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_no
 
 exports.default = _default;
 
-},{"../actions":61,"../components/notification":65,"@babel/runtime/helpers/interopRequireDefault":4,"react":50,"react-redux":39}],73:[function(require,module,exports){
+},{"../actions":60,"../components/notification":64,"@babel/runtime/helpers/interopRequireDefault":3,"react":49,"react-redux":38}],72:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -37026,7 +36975,7 @@ var mapRatesToState = function mapRatesToState(state, rates) {
 
 exports.mapRatesToState = mapRatesToState;
 
-},{"@babel/runtime/helpers/defineProperty":2,"@babel/runtime/helpers/interopRequireDefault":4}],74:[function(require,module,exports){
+},{"@babel/runtime/helpers/defineProperty":1,"@babel/runtime/helpers/interopRequireDefault":3}],73:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -37058,7 +37007,7 @@ var store = (0, _redux.createStore)(_reducers.default, middlewares);
 }, _react.default.createElement(_app_container.default, null)), document.getElementById('app-root') // defined in `/assets/index.html`
 );
 
-},{"./containers/app_container":71,"./middleware/api_middleware":75,"./reducers":76,"@babel/runtime/helpers/interopRequireDefault":4,"react":50,"react-dom":21,"react-redux":39,"redux":51}],75:[function(require,module,exports){
+},{"./containers/app_container":70,"./middleware/api_middleware":74,"./reducers":75,"@babel/runtime/helpers/interopRequireDefault":3,"react":49,"react-dom":20,"react-redux":38,"redux":50}],74:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -37069,8 +37018,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
 var _nodeFetch = _interopRequireDefault(require("node-fetch"));
 
@@ -37086,61 +37033,51 @@ var _nodeFetch = _interopRequireDefault(require("node-fetch"));
 // could handle different HTTP verbs and take a request body with some
 // different headers. But for this use-case test scenario, I'm keeping it
 // pretty basic ;)
-var callApi =
-/*#__PURE__*/
-function () {
-  var _ref2 = (0, _asyncToGenerator2.default)(
-  /*#__PURE__*/
-  _regenerator.default.mark(function _callee(_ref) {
-    var _ref$url, url, _ref$method, method, options, res, jsonData;
+var callApi = function callApi(_ref) {
+  var _ref$url, url, _ref$method, method, options, res, jsonData;
 
-    return _regenerator.default.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _ref$url = _ref.url, url = _ref$url === void 0 ? '' : _ref$url, _ref$method = _ref.method, method = _ref$method === void 0 ? 'GET' : _ref$method;
-            options = {
-              method: method,
-              headers: {
-                'Accept': 'application/json'
-              }
-            };
-            _context.prev = 2;
-            _context.next = 5;
-            return (0, _nodeFetch.default)(url, options);
+  return _regenerator.default.async(function callApi$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          _ref$url = _ref.url, url = _ref$url === void 0 ? '' : _ref$url, _ref$method = _ref.method, method = _ref$method === void 0 ? 'GET' : _ref$method;
+          options = {
+            method: method,
+            headers: {
+              'Accept': 'application/json'
+            }
+          };
+          _context.prev = 2;
+          _context.next = 5;
+          return _regenerator.default.awrap((0, _nodeFetch.default)(url, options));
 
-          case 5:
-            res = _context.sent;
-            _context.next = 8;
-            return res.json();
+        case 5:
+          res = _context.sent;
+          _context.next = 8;
+          return _regenerator.default.awrap(res.json());
 
-          case 8:
-            jsonData = _context.sent;
-            return _context.abrupt("return", jsonData);
+        case 8:
+          jsonData = _context.sent;
+          return _context.abrupt("return", jsonData);
 
-          case 12:
-            _context.prev = 12;
-            _context.t0 = _context["catch"](2);
-            throw _context.t0.message;
+        case 12:
+          _context.prev = 12;
+          _context.t0 = _context["catch"](2);
+          throw _context.t0.message;
 
-          case 15:
-          case "end":
-            return _context.stop();
-        }
+        case 15:
+        case "end":
+          return _context.stop();
       }
-    }, _callee, null, [[2, 12]]);
-  }));
-
-  return function callApi(_x) {
-    return _ref2.apply(this, arguments);
-  };
-}(); // If an action returns a function instead of an object, apply this middleware
+    }
+  }, null, null, [[2, 12]]);
+}; // If an action returns a function instead of an object, apply this middleware
 // which provides a function with 3 properties: dispatch, callApi, and getState.
 
 
-var thunk = function thunk(_ref3) {
-  var dispatch = _ref3.dispatch,
-      getState = _ref3.getState;
+var thunk = function thunk(_ref2) {
+  var dispatch = _ref2.dispatch,
+      getState = _ref2.getState;
   return function (next) {
     return function (action) {
       return typeof action === 'function' ? action(dispatch, callApi, getState) : next(action);
@@ -37151,7 +37088,7 @@ var thunk = function thunk(_ref3) {
 var _default = thunk;
 exports.default = _default;
 
-},{"@babel/runtime/helpers/asyncToGenerator":1,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/regenerator":8,"node-fetch":11}],76:[function(require,module,exports){
+},{"@babel/runtime/helpers/interopRequireDefault":3,"@babel/runtime/regenerator":7,"node-fetch":10}],75:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -37174,7 +37111,7 @@ var appReducer = (0, _redux.combineReducers)({
 var _default = appReducer;
 exports.default = _default;
 
-},{"./notifications":77,"./rates":78,"@babel/runtime/helpers/interopRequireDefault":4,"redux":51}],77:[function(require,module,exports){
+},{"./notifications":76,"./rates":77,"@babel/runtime/helpers/interopRequireDefault":3,"redux":50}],76:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -37238,7 +37175,7 @@ var notifications = function notifications() {
 var _default = notifications;
 exports.default = _default;
 
-},{"../constants/action_types":68,"../constants/status_types":70,"@babel/runtime/helpers/defineProperty":2,"@babel/runtime/helpers/interopRequireDefault":4}],78:[function(require,module,exports){
+},{"../constants/action_types":67,"../constants/status_types":69,"@babel/runtime/helpers/defineProperty":1,"@babel/runtime/helpers/interopRequireDefault":3}],77:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37266,6 +37203,6 @@ var rates = function rates() {
 var _default = rates;
 exports.default = _default;
 
-},{"../constants/action_types":68,"../helpers/rate_helper":73}]},{},[74])
+},{"../constants/action_types":67,"../helpers/rate_helper":72}]},{},[73])
 
 //# sourceMappingURL=app.js.map
