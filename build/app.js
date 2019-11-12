@@ -1,4 +1,42 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
+
+module.exports = _asyncToGenerator;
+},{}],2:[function(require,module,exports){
 function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -15,7 +53,7 @@ function _defineProperty(obj, key, value) {
 }
 
 module.exports = _defineProperty;
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 function _extends() {
   module.exports = _extends = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -35,7 +73,7 @@ function _extends() {
 }
 
 module.exports = _extends;
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : {
     "default": obj
@@ -43,7 +81,7 @@ function _interopRequireDefault(obj) {
 }
 
 module.exports = _interopRequireDefault;
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 var _typeof = require("../helpers/typeof");
 
 function _getRequireWildcardCache() {
@@ -99,7 +137,7 @@ function _interopRequireWildcard(obj) {
 }
 
 module.exports = _interopRequireWildcard;
-},{"../helpers/typeof":6}],5:[function(require,module,exports){
+},{"../helpers/typeof":7}],6:[function(require,module,exports){
 function _objectWithoutPropertiesLoose(source, excluded) {
   if (source == null) return {};
   var target = {};
@@ -116,7 +154,7 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 }
 
 module.exports = _objectWithoutPropertiesLoose;
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
 
 function _typeof(obj) {
@@ -134,7 +172,10 @@ function _typeof(obj) {
 }
 
 module.exports = _typeof;
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
+module.exports = require("regenerator-runtime");
+
+},{"regenerator-runtime":52}],9:[function(require,module,exports){
 'use strict';
 
 /**
@@ -239,7 +280,7 @@ function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
 
 module.exports = hoistNonReactStatics;
 
-},{"react-is":21}],8:[function(require,module,exports){
+},{"react-is":24}],10:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -293,7 +334,34 @@ module.exports = invariant;
 
 }).call(this,require('_process'))
 
-},{"_process":10}],9:[function(require,module,exports){
+},{"_process":13}],11:[function(require,module,exports){
+(function (global){
+"use strict";
+
+// ref: https://github.com/tc39/proposal-global
+var getGlobal = function () {
+	// the only reliable means to get the global object is
+	// `Function('return this')()`
+	// However, this causes CSP violations in Chrome apps.
+	if (typeof self !== 'undefined') { return self; }
+	if (typeof window !== 'undefined') { return window; }
+	if (typeof global !== 'undefined') { return global; }
+	throw new Error('unable to locate global object');
+}
+
+var global = getGlobal();
+
+module.exports = exports = global.fetch;
+
+// Needed for TypeScript and Webpack.
+exports.default = global.fetch.bind(global);
+
+exports.Headers = global.Headers;
+exports.Request = global.Request;
+exports.Response = global.Response;
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
+},{}],12:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -385,7 +453,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
-},{}],10:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -571,7 +639,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],11:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -678,7 +746,7 @@ module.exports = checkPropTypes;
 
 }).call(this,require('_process'))
 
-},{"./lib/ReactPropTypesSecret":15,"_process":10}],12:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":18,"_process":13}],15:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -744,7 +812,7 @@ module.exports = function() {
   return ReactPropTypes;
 };
 
-},{"./lib/ReactPropTypesSecret":15}],13:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":18}],16:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -1340,7 +1408,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 }).call(this,require('_process'))
 
-},{"./checkPropTypes":11,"./lib/ReactPropTypesSecret":15,"_process":10,"object-assign":9,"react-is":21}],14:[function(require,module,exports){
+},{"./checkPropTypes":14,"./lib/ReactPropTypesSecret":18,"_process":13,"object-assign":12,"react-is":24}],17:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -1364,7 +1432,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 }).call(this,require('_process'))
 
-},{"./factoryWithThrowingShims":12,"./factoryWithTypeCheckers":13,"_process":10,"react-is":21}],15:[function(require,module,exports){
+},{"./factoryWithThrowingShims":15,"./factoryWithTypeCheckers":16,"_process":13,"react-is":24}],18:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -1378,7 +1446,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-},{}],16:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 (function (process){
 /** @license React v16.11.0
  * react-dom.development.js
@@ -29110,7 +29178,7 @@ module.exports = reactDom;
 
 }).call(this,require('_process'))
 
-},{"_process":10,"object-assign":9,"prop-types/checkPropTypes":11,"react":47,"scheduler":53,"scheduler/tracing":54}],17:[function(require,module,exports){
+},{"_process":13,"object-assign":12,"prop-types/checkPropTypes":14,"react":50,"scheduler":57,"scheduler/tracing":58}],20:[function(require,module,exports){
 /** @license React v16.11.0
  * react-dom.production.min.js
  *
@@ -29402,7 +29470,7 @@ xe,ye,Ca.injectEventPluginsByName,fa,Sc,function(a){ya(a,Rc)},cb,db,Pd,Ba,Sj,{cu
 (function(a){var b=a.findFiberByHostInstance;return ok(n({},a,{overrideHookState:null,overrideProps:null,setSuspenseHandler:null,scheduleUpdate:null,currentDispatcherRef:Ea.ReactCurrentDispatcher,findHostInstanceByFiber:function(a){a=ic(a);return null===a?null:a.stateNode},findFiberByHostInstance:function(a){return b?b(a):null},findHostInstancesForRefresh:null,scheduleRefresh:null,scheduleRoot:null,setRefreshHandler:null,getCurrentFiber:null}))})({findFiberByHostInstance:Fc,bundleType:0,version:"16.11.0",
 rendererPackageName:"react-dom"});var Dk={default:Ck},Ek=Dk&&Ck||Dk;module.exports=Ek.default||Ek;
 
-},{"object-assign":9,"react":47,"scheduler":53}],18:[function(require,module,exports){
+},{"object-assign":12,"react":50,"scheduler":57}],21:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -29445,7 +29513,7 @@ if (process.env.NODE_ENV === 'production') {
 
 }).call(this,require('_process'))
 
-},{"./cjs/react-dom.development.js":16,"./cjs/react-dom.production.min.js":17,"_process":10}],19:[function(require,module,exports){
+},{"./cjs/react-dom.development.js":19,"./cjs/react-dom.production.min.js":20,"_process":13}],22:[function(require,module,exports){
 (function (process){
 /** @license React v16.11.0
  * react-is.development.js
@@ -29686,7 +29754,7 @@ exports.isSuspense = isSuspense;
 
 }).call(this,require('_process'))
 
-},{"_process":10}],20:[function(require,module,exports){
+},{"_process":13}],23:[function(require,module,exports){
 /** @license React v16.11.0
  * react-is.production.min.js
  *
@@ -29703,7 +29771,7 @@ exports.typeOf=y;exports.AsyncMode=l;exports.ConcurrentMode=m;exports.ContextCon
 exports.isValidElementType=function(a){return"string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||a===q||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n||a.$$typeof===v||a.$$typeof===w||a.$$typeof===x)};exports.isAsyncMode=function(a){return z(a)||y(a)===l};exports.isConcurrentMode=z;exports.isContextConsumer=function(a){return y(a)===k};exports.isContextProvider=function(a){return y(a)===h};
 exports.isElement=function(a){return"object"===typeof a&&null!==a&&a.$$typeof===c};exports.isForwardRef=function(a){return y(a)===n};exports.isFragment=function(a){return y(a)===e};exports.isLazy=function(a){return y(a)===t};exports.isMemo=function(a){return y(a)===r};exports.isPortal=function(a){return y(a)===d};exports.isProfiler=function(a){return y(a)===g};exports.isStrictMode=function(a){return y(a)===f};exports.isSuspense=function(a){return y(a)===p};
 
-},{}],21:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -29715,7 +29783,7 @@ if (process.env.NODE_ENV === 'production') {
 
 }).call(this,require('_process'))
 
-},{"./cjs/react-is.development.js":19,"./cjs/react-is.production.min.js":20,"_process":10}],22:[function(require,module,exports){
+},{"./cjs/react-is.development.js":22,"./cjs/react-is.production.min.js":23,"_process":13}],25:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -29730,7 +29798,7 @@ var ReactReduxContext = _react["default"].createContext(null);
 exports.ReactReduxContext = ReactReduxContext;
 var _default = ReactReduxContext;
 exports["default"] = _default;
-},{"@babel/runtime/helpers/interopRequireDefault":3,"react":47}],23:[function(require,module,exports){
+},{"@babel/runtime/helpers/interopRequireDefault":4,"react":50}],26:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -29793,7 +29861,7 @@ Provider.propTypes = {
 };
 var _default = Provider;
 exports["default"] = _default;
-},{"../utils/Subscription":37,"./Context":22,"@babel/runtime/helpers/interopRequireDefault":3,"@babel/runtime/helpers/interopRequireWildcard":4,"prop-types":14,"react":47}],24:[function(require,module,exports){
+},{"../utils/Subscription":40,"./Context":25,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/helpers/interopRequireWildcard":5,"prop-types":17,"react":50}],27:[function(require,module,exports){
 (function (process){
 "use strict";
 
@@ -30156,7 +30224,7 @@ _ref) {
 }
 }).call(this,require('_process'))
 
-},{"../utils/Subscription":37,"../utils/useIsomorphicLayoutEffect":42,"./Context":22,"@babel/runtime/helpers/extends":2,"@babel/runtime/helpers/interopRequireDefault":3,"@babel/runtime/helpers/interopRequireWildcard":4,"@babel/runtime/helpers/objectWithoutPropertiesLoose":5,"_process":10,"hoist-non-react-statics":7,"invariant":8,"react":47,"react-is":21}],25:[function(require,module,exports){
+},{"../utils/Subscription":40,"../utils/useIsomorphicLayoutEffect":45,"./Context":25,"@babel/runtime/helpers/extends":3,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/helpers/interopRequireWildcard":5,"@babel/runtime/helpers/objectWithoutPropertiesLoose":6,"_process":13,"hoist-non-react-statics":9,"invariant":10,"react":50,"react-is":24}],28:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -30272,7 +30340,7 @@ function createConnect(_temp) {
 var _default = createConnect();
 
 exports["default"] = _default;
-},{"../components/connectAdvanced":24,"../utils/shallowEqual":41,"./mapDispatchToProps":26,"./mapStateToProps":27,"./mergeProps":28,"./selectorFactory":29,"@babel/runtime/helpers/extends":2,"@babel/runtime/helpers/interopRequireDefault":3,"@babel/runtime/helpers/objectWithoutPropertiesLoose":5}],26:[function(require,module,exports){
+},{"../components/connectAdvanced":27,"../utils/shallowEqual":44,"./mapDispatchToProps":29,"./mapStateToProps":30,"./mergeProps":31,"./selectorFactory":32,"@babel/runtime/helpers/extends":3,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/helpers/objectWithoutPropertiesLoose":6}],29:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -30305,7 +30373,7 @@ function whenMapDispatchToPropsIsObject(mapDispatchToProps) {
 
 var _default = [whenMapDispatchToPropsIsFunction, whenMapDispatchToPropsIsMissing, whenMapDispatchToPropsIsObject];
 exports["default"] = _default;
-},{"./wrapMapToProps":31,"redux":48}],27:[function(require,module,exports){
+},{"./wrapMapToProps":34,"redux":51}],30:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -30327,7 +30395,7 @@ function whenMapStateToPropsIsMissing(mapStateToProps) {
 
 var _default = [whenMapStateToPropsIsFunction, whenMapStateToPropsIsMissing];
 exports["default"] = _default;
-},{"./wrapMapToProps":31}],28:[function(require,module,exports){
+},{"./wrapMapToProps":34}],31:[function(require,module,exports){
 (function (process){
 "use strict";
 
@@ -30385,7 +30453,7 @@ var _default = [whenMergePropsIsFunction, whenMergePropsIsOmitted];
 exports["default"] = _default;
 }).call(this,require('_process'))
 
-},{"../utils/verifyPlainObject":43,"@babel/runtime/helpers/extends":2,"@babel/runtime/helpers/interopRequireDefault":3,"_process":10}],29:[function(require,module,exports){
+},{"../utils/verifyPlainObject":46,"@babel/runtime/helpers/extends":3,"@babel/runtime/helpers/interopRequireDefault":4,"_process":13}],32:[function(require,module,exports){
 (function (process){
 "use strict";
 
@@ -30488,7 +30556,7 @@ function finalPropsSelectorFactory(dispatch, _ref2) {
 }
 }).call(this,require('_process'))
 
-},{"./verifySubselectors":30,"@babel/runtime/helpers/interopRequireDefault":3,"@babel/runtime/helpers/objectWithoutPropertiesLoose":5,"_process":10}],30:[function(require,module,exports){
+},{"./verifySubselectors":33,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/helpers/objectWithoutPropertiesLoose":6,"_process":13}],33:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -30513,7 +30581,7 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
   verify(mapDispatchToProps, 'mapDispatchToProps', displayName);
   verify(mergeProps, 'mergeProps', displayName);
 }
-},{"../utils/warning":44,"@babel/runtime/helpers/interopRequireDefault":3}],31:[function(require,module,exports){
+},{"../utils/warning":47,"@babel/runtime/helpers/interopRequireDefault":4}],34:[function(require,module,exports){
 (function (process){
 "use strict";
 
@@ -30593,7 +30661,7 @@ function wrapMapToPropsFunc(mapToProps, methodName) {
 }
 }).call(this,require('_process'))
 
-},{"../utils/verifyPlainObject":43,"@babel/runtime/helpers/interopRequireDefault":3,"_process":10}],32:[function(require,module,exports){
+},{"../utils/verifyPlainObject":46,"@babel/runtime/helpers/interopRequireDefault":4,"_process":13}],35:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -30646,7 +30714,7 @@ function createDispatchHook(context) {
 
 var useDispatch = createDispatchHook();
 exports.useDispatch = useDispatch;
-},{"../components/Context":22,"./useStore":35}],33:[function(require,module,exports){
+},{"../components/Context":25,"./useStore":38}],36:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -30681,7 +30749,7 @@ function useReduxContext() {
   (0, _invariant["default"])(contextValue, 'could not find react-redux context value; please ensure the component is wrapped in a <Provider>');
   return contextValue;
 }
-},{"../components/Context":22,"@babel/runtime/helpers/interopRequireDefault":3,"invariant":8,"react":47}],34:[function(require,module,exports){
+},{"../components/Context":25,"@babel/runtime/helpers/interopRequireDefault":4,"invariant":10,"react":50}],37:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -30828,7 +30896,7 @@ function createSelectorHook(context) {
 
 var useSelector = createSelectorHook();
 exports.useSelector = useSelector;
-},{"../components/Context":22,"../utils/Subscription":37,"../utils/useIsomorphicLayoutEffect":42,"./useReduxContext":33,"@babel/runtime/helpers/interopRequireDefault":3,"invariant":8,"react":47}],35:[function(require,module,exports){
+},{"../components/Context":25,"../utils/Subscription":40,"../utils/useIsomorphicLayoutEffect":45,"./useReduxContext":36,"@babel/runtime/helpers/interopRequireDefault":4,"invariant":10,"react":50}],38:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -30881,7 +30949,7 @@ function createStoreHook(context) {
 
 var useStore = createStoreHook();
 exports.useStore = useStore;
-},{"../components/Context":22,"./useReduxContext":33,"react":47}],36:[function(require,module,exports){
+},{"../components/Context":25,"./useReduxContext":36,"react":50}],39:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -30929,7 +30997,7 @@ var _shallowEqual = _interopRequireDefault(require("./utils/shallowEqual"));
 
 exports.shallowEqual = _shallowEqual["default"];
 (0, _batch.setBatch)(_reactBatchedUpdates.unstable_batchedUpdates);
-},{"./components/Context":22,"./components/Provider":23,"./components/connectAdvanced":24,"./connect/connect":25,"./hooks/useDispatch":32,"./hooks/useSelector":34,"./hooks/useStore":35,"./utils/batch":38,"./utils/reactBatchedUpdates":40,"./utils/shallowEqual":41,"@babel/runtime/helpers/interopRequireDefault":3}],37:[function(require,module,exports){
+},{"./components/Context":25,"./components/Provider":26,"./components/connectAdvanced":27,"./connect/connect":28,"./hooks/useDispatch":35,"./hooks/useSelector":37,"./hooks/useStore":38,"./utils/batch":41,"./utils/reactBatchedUpdates":43,"./utils/shallowEqual":44,"@babel/runtime/helpers/interopRequireDefault":4}],40:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -31033,7 +31101,7 @@ function () {
 }();
 
 exports["default"] = Subscription;
-},{"./batch":38}],38:[function(require,module,exports){
+},{"./batch":41}],41:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -31058,7 +31126,7 @@ var getBatch = function getBatch() {
 };
 
 exports.getBatch = getBatch;
-},{}],39:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -31080,7 +31148,7 @@ function isPlainObject(obj) {
 
   return proto === baseProto;
 }
-},{}],40:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -31089,7 +31157,7 @@ exports.unstable_batchedUpdates = void 0;
 var _reactDom = require("react-dom");
 
 exports.unstable_batchedUpdates = _reactDom.unstable_batchedUpdates;
-},{"react-dom":18}],41:[function(require,module,exports){
+},{"react-dom":21}],44:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -31123,7 +31191,7 @@ function shallowEqual(objA, objB) {
 
   return true;
 }
-},{}],42:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -31142,7 +31210,7 @@ var _react = require("react");
 var isHopefullyDomEnvironment = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined';
 var useIsomorphicLayoutEffect = isHopefullyDomEnvironment ? _react.useLayoutEffect : _react.useEffect;
 exports.useIsomorphicLayoutEffect = useIsomorphicLayoutEffect;
-},{"react":47}],43:[function(require,module,exports){
+},{"react":50}],46:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -31159,7 +31227,7 @@ function verifyPlainObject(value, displayName, methodName) {
     (0, _warning["default"])(methodName + "() in " + displayName + " must return a plain object. Instead received " + value + ".");
   }
 }
-},{"./isPlainObject":39,"./warning":44,"@babel/runtime/helpers/interopRequireDefault":3}],44:[function(require,module,exports){
+},{"./isPlainObject":42,"./warning":47,"@babel/runtime/helpers/interopRequireDefault":4}],47:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -31189,7 +31257,7 @@ function warning(message) {
   /* eslint-enable no-empty */
 
 }
-},{}],45:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 (function (process){
 /** @license React v16.11.0
  * react.development.js
@@ -33512,7 +33580,7 @@ module.exports = react;
 
 }).call(this,require('_process'))
 
-},{"_process":10,"object-assign":9,"prop-types/checkPropTypes":11}],46:[function(require,module,exports){
+},{"_process":13,"object-assign":12,"prop-types/checkPropTypes":14}],49:[function(require,module,exports){
 /** @license React v16.11.0
  * react.production.min.js
  *
@@ -33539,7 +33607,7 @@ b,c){return W().useImperativeHandle(a,b,c)},useDebugValue:function(){},useLayout
 if(null!=b){void 0!==b.ref&&(g=b.ref,l=J.current);void 0!==b.key&&(d=""+b.key);if(a.type&&a.type.defaultProps)var f=a.type.defaultProps;for(k in b)K.call(b,k)&&!L.hasOwnProperty(k)&&(e[k]=void 0===b[k]&&void 0!==f?f[k]:b[k])}var k=arguments.length-2;if(1===k)e.children=c;else if(1<k){f=Array(k);for(var m=0;m<k;m++)f[m]=arguments[m+2];e.children=f}return{$$typeof:p,type:a.type,key:d,ref:g,props:e,_owner:l}},createFactory:function(a){var b=M.bind(null,a);b.type=a;return b},isValidElement:N,version:"16.11.0",
 __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentDispatcher:I,ReactCurrentBatchConfig:{suspense:null},ReactCurrentOwner:J,IsSomeRendererActing:{current:!1},assign:h}},Y={default:X},Z=Y&&X||Y;module.exports=Z.default||Z;
 
-},{"object-assign":9}],47:[function(require,module,exports){
+},{"object-assign":12}],50:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -33551,7 +33619,7 @@ if (process.env.NODE_ENV === 'production') {
 
 }).call(this,require('_process'))
 
-},{"./cjs/react.development.js":45,"./cjs/react.production.min.js":46,"_process":10}],48:[function(require,module,exports){
+},{"./cjs/react.development.js":48,"./cjs/react.production.min.js":49,"_process":13}],51:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -34228,7 +34296,735 @@ exports.createStore = createStore;
 
 }).call(this,require('_process'))
 
-},{"_process":10,"symbol-observable":55}],49:[function(require,module,exports){
+},{"_process":13,"symbol-observable":59}],52:[function(require,module,exports){
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var runtime = (function (exports) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  exports.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunctionPrototype[toStringTagSymbol] =
+    GeneratorFunction.displayName = "GeneratorFunction";
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      prototype[method] = function(arg) {
+        return this._invoke(method, arg);
+      };
+    });
+  }
+
+  exports.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  exports.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      if (!(toStringTagSymbol in genFun)) {
+        genFun[toStringTagSymbol] = "GeneratorFunction";
+      }
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  exports.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return Promise.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return Promise.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new Promise(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+  exports.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  exports.async = function(innerFn, outerFn, self, tryLocsList) {
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList)
+    );
+
+    return exports.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        // Note: ["return"] must be used for ES3 parsing compatibility.
+        if (delegate.iterator["return"]) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  Gp[toStringTagSymbol] = "Generator";
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  Gp[iteratorSymbol] = function() {
+    return this;
+  };
+
+  Gp.toString = function() {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  exports.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+
+  // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+  return exports;
+
+}(
+  // If this script is executing as a CommonJS module, use module.exports
+  // as the regeneratorRuntime namespace. Otherwise create a new empty
+  // object. Either way, the resulting object will be used to initialize
+  // the regeneratorRuntime variable at the top of this file.
+  typeof module === "object" ? module.exports : {}
+));
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  Function("r", "regeneratorRuntime = r")(runtime);
+}
+
+},{}],53:[function(require,module,exports){
 (function (process){
 /** @license React v0.17.0
  * scheduler-tracing.development.js
@@ -34654,7 +35450,7 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 
 }).call(this,require('_process'))
 
-},{"_process":10}],50:[function(require,module,exports){
+},{"_process":13}],54:[function(require,module,exports){
 /** @license React v0.17.0
  * scheduler-tracing.production.min.js
  *
@@ -34666,7 +35462,7 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 
 'use strict';Object.defineProperty(exports,"__esModule",{value:!0});var b=0;exports.__interactionsRef=null;exports.__subscriberRef=null;exports.unstable_clear=function(a){return a()};exports.unstable_getCurrent=function(){return null};exports.unstable_getThreadID=function(){return++b};exports.unstable_trace=function(a,d,c){return c()};exports.unstable_wrap=function(a){return a};exports.unstable_subscribe=function(){};exports.unstable_unsubscribe=function(){};
 
-},{}],51:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 (function (process){
 /** @license React v0.17.0
  * scheduler.development.js
@@ -35696,7 +36492,7 @@ exports.unstable_Profiling = unstable_Profiling;
 
 }).call(this,require('_process'))
 
-},{"_process":10}],52:[function(require,module,exports){
+},{"_process":13}],56:[function(require,module,exports){
 /** @license React v0.17.0
  * scheduler.production.min.js
  *
@@ -35720,7 +36516,7 @@ exports.unstable_scheduleCallback=function(a,b,c){var d=exports.unstable_now();i
 exports.unstable_wrapCallback=function(a){var b=S;return function(){var c=S;S=b;try{return a.apply(this,arguments)}finally{S=c}}};exports.unstable_getCurrentPriorityLevel=function(){return S};exports.unstable_shouldYield=function(){var a=exports.unstable_now();W(a);var b=M(O);return b!==R&&null!==R&&null!==b&&null!==b.callback&&b.startTime<=a&&b.expirationTime<R.expirationTime||k()};exports.unstable_requestPaint=aa;exports.unstable_continueExecution=function(){U||T||(U=!0,f(Y))};
 exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNode=function(){return M(O)};exports.unstable_Profiling=null;
 
-},{}],53:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -35732,7 +36528,7 @@ if (process.env.NODE_ENV === 'production') {
 
 }).call(this,require('_process'))
 
-},{"./cjs/scheduler.development.js":51,"./cjs/scheduler.production.min.js":52,"_process":10}],54:[function(require,module,exports){
+},{"./cjs/scheduler.development.js":55,"./cjs/scheduler.production.min.js":56,"_process":13}],58:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -35744,7 +36540,7 @@ if (process.env.NODE_ENV === 'production') {
 
 }).call(this,require('_process'))
 
-},{"./cjs/scheduler-tracing.development.js":49,"./cjs/scheduler-tracing.production.min.js":50,"_process":10}],55:[function(require,module,exports){
+},{"./cjs/scheduler-tracing.development.js":53,"./cjs/scheduler-tracing.production.min.js":54,"_process":13}],59:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -35777,7 +36573,7 @@ var result = (0, _ponyfill2['default'])(root);
 exports['default'] = result;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./ponyfill.js":56}],56:[function(require,module,exports){
+},{"./ponyfill.js":60}],60:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35801,7 +36597,7 @@ function symbolObservablePonyfill(root) {
 
 	return result;
 };
-},{}],57:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35832,7 +36628,7 @@ Object.keys(_notification_actions).forEach(function (key) {
   });
 });
 
-},{"./notification_actions":58,"./rate_actions":59}],58:[function(require,module,exports){
+},{"./notification_actions":62,"./rate_actions":63}],62:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35850,30 +36646,67 @@ var resetNotifications = function resetNotifications() {
 
 exports.resetNotifications = resetNotifications;
 
-},{"../constants/action_types":63}],59:[function(require,module,exports){
+},{"../constants/action_types":67}],63:[function(require,module,exports){
 "use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.fetchRates = void 0;
 
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+
+var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
+
 var _action_types = require("../constants/action_types");
 
 var _endpoints = require("../constants/endpoints");
 
 var fetchRates = function fetchRates() {
-  return function (dispatch, callApi) {
-    dispatch(fetchRatesPending());
-    return callApi({
-      url: _endpoints.RATES_URL,
-      method: 'GET'
-    }).then(function (res) {
-      return dispatch(fetchRatesSuccess(res.rates));
-    }).catch(function (err) {
-      return dispatch(fetchRatesFail(err));
-    });
-  };
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref = (0, _asyncToGenerator2.default)(
+      /*#__PURE__*/
+      _regenerator.default.mark(function _callee(dispatch, callApi) {
+        var data;
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                dispatch(fetchRatesPending());
+                _context.prev = 1;
+                _context.next = 4;
+                return callApi({
+                  url: _endpoints.RATES_URL
+                });
+
+              case 4:
+                data = _context.sent;
+                dispatch(fetchRatesSuccess(data.rates));
+                _context.next = 11;
+                break;
+
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](1);
+                dispatch(fetchRatesFail(_context.t0));
+
+              case 11:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[1, 8]]);
+      }));
+
+      return function (_x, _x2) {
+        return _ref.apply(this, arguments);
+      };
+    }()
+  );
 };
 
 exports.fetchRates = fetchRates;
@@ -35898,7 +36731,7 @@ var fetchRatesFail = function fetchRatesFail(error) {
   };
 };
 
-},{"../constants/action_types":63,"../constants/endpoints":64}],60:[function(require,module,exports){
+},{"../constants/action_types":67,"../constants/endpoints":68,"@babel/runtime/helpers/asyncToGenerator":1,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/regenerator":8}],64:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -35930,7 +36763,7 @@ Button.propTypes = {
 var _default = Button;
 exports.default = _default;
 
-},{"@babel/runtime/helpers/interopRequireDefault":3,"prop-types":14,"react":47}],61:[function(require,module,exports){
+},{"@babel/runtime/helpers/interopRequireDefault":4,"prop-types":17,"react":50}],65:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -35971,7 +36804,7 @@ Notification.propTypes = {
 var _default = Notification;
 exports.default = _default;
 
-},{"../constants/status_types":65,"@babel/runtime/helpers/interopRequireDefault":3,"prop-types":14,"react":47}],62:[function(require,module,exports){
+},{"../constants/status_types":69,"@babel/runtime/helpers/interopRequireDefault":4,"prop-types":17,"react":50}],66:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -35987,6 +36820,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var RateTable = function RateTable(_ref) {
   var rates = _ref.rates;
+  if (Object.keys(rates).length === 0) return null;
   return _react.default.createElement("table", null, _react.default.createElement("thead", null, _react.default.createElement("tr", null, _react.default.createElement("th", null, "Type"), _react.default.createElement("th", null, "Rate"))), _react.default.createElement("tbody", null, Object.keys(rates).map(function (key) {
     return _react.default.createElement("tr", {
       key: key
@@ -36000,7 +36834,7 @@ RateTable.propTypes = {
 var _default = RateTable;
 exports.default = _default;
 
-},{"@babel/runtime/helpers/interopRequireDefault":3,"prop-types":14,"react":47}],63:[function(require,module,exports){
+},{"@babel/runtime/helpers/interopRequireDefault":4,"prop-types":17,"react":50}],67:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36018,7 +36852,7 @@ exports.FETCH_RATES_FAIL = FETCH_RATES_FAIL;
 var RESET_NOTIFICATIONS = 'RESET_NOTIFICATIONS';
 exports.RESET_NOTIFICATIONS = RESET_NOTIFICATIONS;
 
-},{}],64:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36028,7 +36862,7 @@ exports.RATES_URL = void 0;
 var RATES_URL = 'https://api.exchangeratesapi.io/latest';
 exports.RATES_URL = RATES_URL;
 
-},{}],65:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36044,7 +36878,7 @@ exports.STATUS_INFO = STATUS_INFO;
 var STATUSES = [STATUS_SUCCESS, STATUS_ERROR, STATUS_INFO];
 exports.STATUSES = STATUSES;
 
-},{}],66:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36083,19 +36917,19 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 var AppContainer = function AppContainer(_ref) {
   var rates = _ref.rates,
       onButtonPress = _ref.onButtonPress;
-  return _react.default.createElement("div", null, _react.default.createElement("header", null, _react.default.createElement(_notification_container.default, null)), _react.default.createElement("main", null, _react.default.createElement("h2", null, "Currency Rates"), _react.default.createElement(_rate_table.default, {
-    rates: rates
-  })), _react.default.createElement("footer", null, _react.default.createElement(_button.default, {
+  return _react.default.createElement("div", null, _react.default.createElement("header", null, _react.default.createElement(_notification_container.default, null)), _react.default.createElement("br", null), _react.default.createElement("main", null, _react.default.createElement("h2", null, "Currency Rates"), _react.default.createElement(_button.default, {
     label: "Fetch Rates",
     onPress: onButtonPress
-  })));
+  }), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement(_rate_table.default, {
+    rates: rates
+  })), _react.default.createElement("footer", null, _react.default.createElement("br", null), "\xA9 2019"));
 };
 
 var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(AppContainer);
 
 exports.default = _default;
 
-},{"../actions":57,"../components/button":60,"../components/rate_table":62,"./notification_container":67,"@babel/runtime/helpers/interopRequireDefault":3,"react":47,"react-redux":36}],67:[function(require,module,exports){
+},{"../actions":61,"../components/button":64,"../components/rate_table":66,"./notification_container":71,"@babel/runtime/helpers/interopRequireDefault":4,"react":50,"react-redux":39}],71:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36133,7 +36967,7 @@ var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_no
 
 exports.default = _default;
 
-},{"../actions":57,"../components/notification":61,"@babel/runtime/helpers/interopRequireDefault":3,"react":47,"react-redux":36}],68:[function(require,module,exports){
+},{"../actions":61,"../components/notification":65,"@babel/runtime/helpers/interopRequireDefault":4,"react":50,"react-redux":39}],72:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36158,7 +36992,7 @@ var mapRatesToState = function mapRatesToState(state, rates) {
 
 exports.mapRatesToState = mapRatesToState;
 
-},{"@babel/runtime/helpers/defineProperty":1,"@babel/runtime/helpers/interopRequireDefault":3}],69:[function(require,module,exports){
+},{"@babel/runtime/helpers/defineProperty":2,"@babel/runtime/helpers/interopRequireDefault":4}],73:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36190,35 +37024,89 @@ var store = (0, _redux.createStore)(_reducers.default, middlewares);
 }, _react.default.createElement(_app_container.default, null)), document.getElementById('app-root') // defined in `/assets/index.html`
 );
 
-},{"./containers/app_container":66,"./middleware/api_middleware":70,"./reducers":71,"@babel/runtime/helpers/interopRequireDefault":3,"react":47,"react-dom":18,"react-redux":36,"redux":48}],70:[function(require,module,exports){
+},{"./containers/app_container":70,"./middleware/api_middleware":74,"./reducers":75,"@babel/runtime/helpers/interopRequireDefault":4,"react":50,"react-dom":21,"react-redux":39,"redux":51}],74:[function(require,module,exports){
 "use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var sampleFetchRates = {
-  "CAD": 1.273,
-  "USD": 1.0111,
-  "SEK": 10.7025
-}; // TODO: make this an async function and use fetch API to hit target url.
 
-var callApi = function callApi(_ref) {
-  var _ref$url = _ref.url,
-      url = _ref$url === void 0 ? '' : _ref$url,
-      _ref$method = _ref.method,
-      method = _ref$method === void 0 ? 'GET' : _ref$method,
-      _ref$body = _ref.body,
-      body = _ref$body === void 0 ? {} : _ref$body;
-  return Promise.resolve({
-    rates: sampleFetchRates
-  });
-}; // If an action returns a function instead of an object, apply this middleware.
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+
+var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
+
+var _nodeFetch = _interopRequireDefault(require("node-fetch"));
+
+// NOTE: While the fetch API is built into modern browsers these days, I chose
+// to use 'node-fetch' simply to make the interface consistent without assuming
+// the user-agent has the fetch API available. This could be easily swapped out
+// for something else since it is isolated to this single module and the app
+// proper is only aware of the `callApi()` function that is returned here.
+// Make an HTTP request to the given `url` and return the resulting JSON,
+// otherwise throw an error message.
+//
+// TODO: Could add more logic here to make this function more generic so it
+// could handle different HTTP verbs and take a request body with some
+// different headers. But for this use-case test scenario, I'm keeping it
+// pretty basic ;)
+var callApi =
+/*#__PURE__*/
+function () {
+  var _ref2 = (0, _asyncToGenerator2.default)(
+  /*#__PURE__*/
+  _regenerator.default.mark(function _callee(_ref) {
+    var _ref$url, url, _ref$method, method, options, res, jsonData;
+
+    return _regenerator.default.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _ref$url = _ref.url, url = _ref$url === void 0 ? '' : _ref$url, _ref$method = _ref.method, method = _ref$method === void 0 ? 'GET' : _ref$method;
+            options = {
+              method: method,
+              headers: {
+                'Accept': 'application/json'
+              }
+            };
+            _context.prev = 2;
+            _context.next = 5;
+            return (0, _nodeFetch.default)(url, options);
+
+          case 5:
+            res = _context.sent;
+            _context.next = 8;
+            return res.json();
+
+          case 8:
+            jsonData = _context.sent;
+            return _context.abrupt("return", jsonData);
+
+          case 12:
+            _context.prev = 12;
+            _context.t0 = _context["catch"](2);
+            throw _context.t0.message;
+
+          case 15:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, null, [[2, 12]]);
+  }));
+
+  return function callApi(_x) {
+    return _ref2.apply(this, arguments);
+  };
+}(); // If an action returns a function instead of an object, apply this middleware
+// which provides a function with 3 properties: dispatch, callApi, and getState.
 
 
-var thunk = function thunk(_ref2) {
-  var dispatch = _ref2.dispatch,
-      getState = _ref2.getState;
+var thunk = function thunk(_ref3) {
+  var dispatch = _ref3.dispatch,
+      getState = _ref3.getState;
   return function (next) {
     return function (action) {
       return typeof action === 'function' ? action(dispatch, callApi, getState) : next(action);
@@ -36229,7 +37117,7 @@ var thunk = function thunk(_ref2) {
 var _default = thunk;
 exports.default = _default;
 
-},{}],71:[function(require,module,exports){
+},{"@babel/runtime/helpers/asyncToGenerator":1,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/regenerator":8,"node-fetch":11}],75:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36252,7 +37140,7 @@ var appReducer = (0, _redux.combineReducers)({
 var _default = appReducer;
 exports.default = _default;
 
-},{"./notifications":72,"./rates":73,"@babel/runtime/helpers/interopRequireDefault":3,"redux":48}],72:[function(require,module,exports){
+},{"./notifications":76,"./rates":77,"@babel/runtime/helpers/interopRequireDefault":4,"redux":51}],76:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36302,7 +37190,7 @@ var notifications = function notifications() {
         isLoading: false,
         isVisible: true,
         status: _status_types.STATUS_ERROR,
-        message: 'Something went wrong.'
+        message: "Something went wrong: ".concat(action.error)
       });
 
     case _action_types.RESET_NOTIFICATIONS:
@@ -36316,7 +37204,7 @@ var notifications = function notifications() {
 var _default = notifications;
 exports.default = _default;
 
-},{"../constants/action_types":63,"../constants/status_types":65,"@babel/runtime/helpers/defineProperty":1,"@babel/runtime/helpers/interopRequireDefault":3}],73:[function(require,module,exports){
+},{"../constants/action_types":67,"../constants/status_types":69,"@babel/runtime/helpers/defineProperty":2,"@babel/runtime/helpers/interopRequireDefault":4}],77:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36328,24 +37216,8 @@ var _action_types = require("../constants/action_types");
 
 var _rate_helper = require("../helpers/rate_helper");
 
-var defaultState = {
-  "CAD": 1.4561,
-  "USD": 1.1034,
-  "JPY": 120.72,
-  "GBP": 0.86158
-}; // State should look like a dictionary of currency codes mapped to their
-// corresponding rate values like this:
-// ```
-// {
-//   "CAD": 1.4561,
-//   "USD": 1.1034,
-//   "JPY": 120.72,
-//   "GBP": 0.86158
-// }
-// ```
-
 var rates = function rates() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
@@ -36360,6 +37232,6 @@ var rates = function rates() {
 var _default = rates;
 exports.default = _default;
 
-},{"../constants/action_types":63,"../helpers/rate_helper":68}]},{},[69])
+},{"../constants/action_types":67,"../helpers/rate_helper":72}]},{},[73])
 
 //# sourceMappingURL=app.js.map
