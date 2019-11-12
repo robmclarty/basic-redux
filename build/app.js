@@ -36646,7 +36646,7 @@ var resetNotifications = function resetNotifications() {
 
 exports.resetNotifications = resetNotifications;
 
-},{"../constants/action_types":67}],63:[function(require,module,exports){
+},{"../constants/action_types":68}],63:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36731,7 +36731,7 @@ var fetchRatesFail = function fetchRatesFail(error) {
   };
 };
 
-},{"../constants/action_types":67,"../constants/endpoints":68,"@babel/runtime/helpers/asyncToGenerator":1,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/regenerator":8}],64:[function(require,module,exports){
+},{"../constants/action_types":68,"../constants/endpoints":69,"@babel/runtime/helpers/asyncToGenerator":1,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/regenerator":8}],64:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36804,7 +36804,7 @@ Notification.propTypes = {
 var _default = Notification;
 exports.default = _default;
 
-},{"../constants/status_types":69,"@babel/runtime/helpers/interopRequireDefault":4,"prop-types":17,"react":50}],66:[function(require,module,exports){
+},{"../constants/status_types":70,"@babel/runtime/helpers/interopRequireDefault":4,"prop-types":17,"react":50}],66:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36837,6 +36837,34 @@ exports.default = _default;
 },{"@babel/runtime/helpers/interopRequireDefault":4,"prop-types":17,"react":50}],67:[function(require,module,exports){
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var Spinner = function Spinner(_ref) {
+  var isLoading = _ref.isLoading;
+  if (!isLoading) return null;
+  return _react.default.createElement("div", {
+    className: "spinner"
+  }, "Loading...");
+};
+
+Spinner.propTypes = {
+  isLoading: _propTypes.default.bool.isRequired
+};
+var _default = Spinner;
+exports.default = _default;
+
+},{"@babel/runtime/helpers/interopRequireDefault":4,"prop-types":17,"react":50}],68:[function(require,module,exports){
+"use strict";
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -36852,7 +36880,7 @@ exports.FETCH_RATES_FAIL = FETCH_RATES_FAIL;
 var RESET_NOTIFICATIONS = 'RESET_NOTIFICATIONS';
 exports.RESET_NOTIFICATIONS = RESET_NOTIFICATIONS;
 
-},{}],68:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36862,7 +36890,7 @@ exports.RATES_URL = void 0;
 var RATES_URL = 'https://api.exchangeratesapi.io/latest';
 exports.RATES_URL = RATES_URL;
 
-},{}],69:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36878,7 +36906,7 @@ exports.STATUS_INFO = STATUS_INFO;
 var STATUSES = [STATUS_SUCCESS, STATUS_ERROR, STATUS_INFO];
 exports.STATUSES = STATUSES;
 
-},{}],70:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36898,11 +36926,14 @@ var _button = _interopRequireDefault(require("../components/button"));
 
 var _rate_table = _interopRequireDefault(require("../components/rate_table"));
 
+var _spinner = _interopRequireDefault(require("../components/spinner"));
+
 var _notification_container = _interopRequireDefault(require("./notification_container"));
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    rates: state.rates
+    rates: state.rates,
+    isLoading: state.notifications.isLoading
   };
 };
 
@@ -36916,8 +36947,11 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 var AppContainer = function AppContainer(_ref) {
   var rates = _ref.rates,
+      isLoading = _ref.isLoading,
       onButtonPress = _ref.onButtonPress;
-  return _react.default.createElement("div", null, _react.default.createElement("header", null, _react.default.createElement(_notification_container.default, null)), _react.default.createElement("br", null), _react.default.createElement("main", null, _react.default.createElement("h2", null, "Currency Rates"), _react.default.createElement(_button.default, {
+  return _react.default.createElement("div", null, _react.default.createElement("header", null, _react.default.createElement(_notification_container.default, null), _react.default.createElement(_spinner.default, {
+    isLoading: isLoading
+  })), _react.default.createElement("br", null), _react.default.createElement("main", null, _react.default.createElement("h2", null, "Currency Rates"), _react.default.createElement(_button.default, {
     label: "Fetch Rates",
     onPress: onButtonPress
   }), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement(_rate_table.default, {
@@ -36929,7 +36963,7 @@ var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App
 
 exports.default = _default;
 
-},{"../actions":61,"../components/button":64,"../components/rate_table":66,"./notification_container":71,"@babel/runtime/helpers/interopRequireDefault":4,"react":50,"react-redux":39}],71:[function(require,module,exports){
+},{"../actions":61,"../components/button":64,"../components/rate_table":66,"../components/spinner":67,"./notification_container":72,"@babel/runtime/helpers/interopRequireDefault":4,"react":50,"react-redux":39}],72:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36967,7 +37001,7 @@ var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_no
 
 exports.default = _default;
 
-},{"../actions":61,"../components/notification":65,"@babel/runtime/helpers/interopRequireDefault":4,"react":50,"react-redux":39}],72:[function(require,module,exports){
+},{"../actions":61,"../components/notification":65,"@babel/runtime/helpers/interopRequireDefault":4,"react":50,"react-redux":39}],73:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -36992,7 +37026,7 @@ var mapRatesToState = function mapRatesToState(state, rates) {
 
 exports.mapRatesToState = mapRatesToState;
 
-},{"@babel/runtime/helpers/defineProperty":2,"@babel/runtime/helpers/interopRequireDefault":4}],73:[function(require,module,exports){
+},{"@babel/runtime/helpers/defineProperty":2,"@babel/runtime/helpers/interopRequireDefault":4}],74:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -37024,7 +37058,7 @@ var store = (0, _redux.createStore)(_reducers.default, middlewares);
 }, _react.default.createElement(_app_container.default, null)), document.getElementById('app-root') // defined in `/assets/index.html`
 );
 
-},{"./containers/app_container":70,"./middleware/api_middleware":74,"./reducers":75,"@babel/runtime/helpers/interopRequireDefault":4,"react":50,"react-dom":21,"react-redux":39,"redux":51}],74:[function(require,module,exports){
+},{"./containers/app_container":71,"./middleware/api_middleware":75,"./reducers":76,"@babel/runtime/helpers/interopRequireDefault":4,"react":50,"react-dom":21,"react-redux":39,"redux":51}],75:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -37117,7 +37151,7 @@ var thunk = function thunk(_ref3) {
 var _default = thunk;
 exports.default = _default;
 
-},{"@babel/runtime/helpers/asyncToGenerator":1,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/regenerator":8,"node-fetch":11}],75:[function(require,module,exports){
+},{"@babel/runtime/helpers/asyncToGenerator":1,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/regenerator":8,"node-fetch":11}],76:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -37140,7 +37174,7 @@ var appReducer = (0, _redux.combineReducers)({
 var _default = appReducer;
 exports.default = _default;
 
-},{"./notifications":76,"./rates":77,"@babel/runtime/helpers/interopRequireDefault":4,"redux":51}],76:[function(require,module,exports){
+},{"./notifications":77,"./rates":78,"@babel/runtime/helpers/interopRequireDefault":4,"redux":51}],77:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -37204,7 +37238,7 @@ var notifications = function notifications() {
 var _default = notifications;
 exports.default = _default;
 
-},{"../constants/action_types":67,"../constants/status_types":69,"@babel/runtime/helpers/defineProperty":2,"@babel/runtime/helpers/interopRequireDefault":4}],77:[function(require,module,exports){
+},{"../constants/action_types":68,"../constants/status_types":70,"@babel/runtime/helpers/defineProperty":2,"@babel/runtime/helpers/interopRequireDefault":4}],78:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37232,6 +37266,6 @@ var rates = function rates() {
 var _default = rates;
 exports.default = _default;
 
-},{"../constants/action_types":67,"../helpers/rate_helper":72}]},{},[73])
+},{"../constants/action_types":68,"../helpers/rate_helper":73}]},{},[74])
 
 //# sourceMappingURL=app.js.map

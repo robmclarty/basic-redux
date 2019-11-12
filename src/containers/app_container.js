@@ -4,10 +4,12 @@ import { connect } from 'react-redux'
 import { fetchRates } from '../actions'
 import Button from '../components/button'
 import RateTable from '../components/rate_table'
+import Spinner from '../components/spinner'
 import Notification from './notification_container'
 
 const mapStateToProps = state => ({
-  rates: state.rates
+  rates: state.rates,
+  isLoading: state.notifications.isLoading
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -16,11 +18,13 @@ const mapDispatchToProps = dispatch => ({
 
 const AppContainer = ({
   rates,
+  isLoading,
   onButtonPress
 }) => (
   <div>
     <header>
       <Notification />
+      <Spinner isLoading={isLoading} />
     </header>
 
     <br />
