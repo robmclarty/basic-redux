@@ -11,6 +11,7 @@ import thunk from '../../src/middleware/api_middleware'
 const middlewares = [thunk]
 const mockStore = configureStore(middlewares)
 
+// TODO: mock fetch so not making a real http request
 describe('Actions/Rates', () => {
   test('should get rates from url', async () => {
     const store = mockStore({})
